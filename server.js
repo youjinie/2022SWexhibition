@@ -15,8 +15,8 @@ app.listen(port,function(){
     console.log('listening ib 6608');
 }) // 서버 연결 
 
-app.get('/pet', function(요청, 응답){
-    응답.sendFile(__dirname + '/cat.html');
+app.get('/group', function(요청, 응답){
+    응답.sendFile(__dirname + '/member.html');
     
 });
 //app.get('/pet', function(요청, 응답){
