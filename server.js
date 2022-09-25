@@ -1,12 +1,6 @@
-var express = require('express');
-var app = express(); // express 서버 생성
-
-
-var port = 6608;
-
-app.listen(port,function(){
-    console.log('listening ib 6608');
-}) // 서버 연결 
+const express = require('express');
+const app = express(); // express 서버 생성
+const port = process.env.PORT || 3000;
 
 // get : 읽기(사이트) , post : 쓰기(댓글작성), put: 수정, delete: 삭제(댓글) 
  // 메인 페이지
@@ -25,4 +19,5 @@ app.get('/pet', function(요청, 응답){
 });
 
 
+app.listen(port,()=> console.log(`Example app listening on port ${port}`));
 
