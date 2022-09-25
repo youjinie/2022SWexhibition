@@ -7,7 +7,7 @@ var port = 6608;
 
  // 메인 페이지
 app.get('/', function(요청, 응답){
-    응답.sendFile(__dirname + '/map.html');
+    응답.sendFile(__dirname + '/index.html');
     
 });
 
