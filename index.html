@@ -21,9 +21,17 @@ var map = new naver.maps.Map('map', mapOptions);
 
 
 </script>
-<button type = "button" onclick =  mapOptions = {
+
+<button id = "b1">Button 1</button>
+<script>
+    var b1 = document.getElementById('b1')
+    b1.onclick = function() {
+        mapOptions = {
     center: new naver.maps.LatLng(37.3595704, 127.105399),
-    zoom: 20};></button>
+    zoom: 20
+    };
+};
+</script>
 
 </body>
 </html>
