@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=usxa85bak8"></script>
+        <title> 방구석 힐러 </title>
+    </head>
+    <body>
+        <div>
+            <span><input name = "logo" type = "button" value = "사이트 로고"/></span>
+            <span><input name = "control" type = "button" value = "질병관리청"/></span>
+            <span><input name = "covid19" type = "button" value = "코로나19 현황"/></span>
+            <hr>
+            <br><br>
+        </div>
+        
+        <div>
+            <h1 id = "title"> 방구석 힐러 </h1>
+            <br> 
+            <span><input name = "isolation" type = "button" value = "격리시설"/></span>
+            <span><input name = "pharmacy" type = "button" value = "약국"/></span>
+            <span><input name = "station" type = "button" value = "선별진료소"/></span>
+            <span><input name = "isolation" type = "button" value = "격리시설"/></span>
+            <br><br>
+            <hr>
+        </div>
+        
+        <div>
+            <br>
+            <form>
+                <input name = "search" type = "text" placeholder = " 이름으로 검색 ">
+            </form>
+            <br>
+            <hr>
+        </div>
+        
+        <div>
+            <br>
+            <div id="map" style="width:100%;height:400px;"></div>
+            <script>
+            var mapOptions = {
+                center: new naver.maps.LatLng(37.3595704, 127.105399),
+                zoom: 10
+            };
+            var map = new naver.maps.Map('map', mapOptions);
+            </script>
+            <br>
+            <hr>
+        </div>
+
+        <div>
+            <br>
+            <select name="array">
+                <span><option value = "distance">가까운 순</option> </span>
+                <span><option value = "related">관련도 순</option></span>
+            </select>
+            <form>
+                <span><input name = "location" type = "button" value = "현재 위치 "></span>
+            </form>
+            <br>
+            <hr>
+        </div>
+
+        <div>
+            <span><textarea name = "one">병원 명 1</textarea> <br></span>
+            <span><textarea name = "two">병원 명 2</textarea> <br></span>
+            <span><textarea name = "three">병원 명 3</textarea> <br></span>
+            <form>
+                <input name = "add" type = "button" value = "더보기">
+            </form>
+        </div>
+    </body>
+</html>

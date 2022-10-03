@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 // get : 읽기(사이트) , post : 쓰기(댓글작성), put: 수정, delete: 삭제(댓글) 
  // 메인 페이지
 app.get('/', function(요청, 응답){
-    응답.sendFile(__dirname + '/index.html');
+    응답.sendFile(__dirname + '/main.html');
     
 });
 
