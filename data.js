@@ -8,22 +8,47 @@ const db = new sqlite3.Database('./data/mapdata.db',sqlite3.OPEN_READWRITE, (err
 
 });
 
-var sql = `SELECT * from '24시 편의점';`;
-var templist = [];
-db.all(sql, function(err, rows){
-    let cnttemp = 0;
-
+//병원 DB
+var hpname = `SELECT 병원명 from '병원';`;
+db.all(hpname, function(err, rows){
     rows.forEach(function (row){
-        //templist[cnttemp] = row;
-        //console.log(row);
-        //templist.push(row.업체명);
-        //console.log(templist[cnttemp]);
-        //cnttemp++;
-
-        //아마 여기서 res.send 어쩌구 하면서 서버랑 같이 써야 할 듯 유진이랑 같이 얘기해보깅
+        console.log(row);
     });
 }
 );
+
+var hpaddress = `SELECT 주소 from '병원';`;
+db.all(hpaddress, function(err, rows){
+    rows.forEach(function (row){
+        console.log(row);
+    });
+}
+);
+
+var hptime = `SELECT 평일운영시간 from '병원';`;
+db.all(hptime, function(err, rows){
+    rows.forEach(function (row){
+        console.log(row);
+    });
+}
+);
+
+var hpbg = `SELECT 비고 from '병원';`;
+db.all(hpbg, function(err, rows){
+    rows.forEach(function (row){
+        console.log(row);
+    });
+}
+);
+
+var hpwg = `SELECT 위도, 경도 from '병원';`;
+db.all(hpwg, function(err, rows){
+    rows.forEach(function (row){
+        console.log(row);
+    });
+}
+);
+
 
 
 
