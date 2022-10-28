@@ -10,8 +10,7 @@
   "main": "server.js",
   "scripts": {
     "satrt": "sever.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild" : "npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
