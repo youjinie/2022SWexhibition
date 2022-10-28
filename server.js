@@ -35,8 +35,9 @@ app.get('/search', function(요청, 응답){
                  hpiy : row.일요일운영시간 });*/
             응답.render('hplist');
         });
-    }
-);
+    });
+
+    응답.render('hplist');
 });
 app.get('/pet', function(요청, 응답){
     
