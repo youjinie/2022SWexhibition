@@ -22,7 +22,7 @@ app.get('/', function(요청, 응답){
 app.get('/search', function(요청, 응답){
     응답.sendFile(__dirname + '/search.html');
     
-    /*var hpname = `SELECT 병원명 from '병원';`;
+    var hpname = `SELECT 병원명 from '병원';`;
     db.all(hpname, function(err, rows){
         rows.forEach(function (row){
             console.log(row);
@@ -35,7 +35,7 @@ app.get('/search', function(요청, 응답){
                  hpiy : row.일요일운영시간 });
         });
     }
-);*/
+);
 });
 app.get('/pet', function(요청, 응답){
     
