@@ -31,7 +31,7 @@ app.get('/search', function(요청, 응답){
         rows.forEach(function (row){
             console.log(row);
 
-            응답.render('hplist', { hpname : row.병원명 });
+            응답.render('search', { hpname : row.병원명 });
 
         });
     });
