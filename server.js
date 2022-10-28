@@ -33,6 +33,7 @@ app.get('/search', function(요청, 응답){
                  hppy : row.평일운영시간,
                  hpty : row.토요일운영시간,
                  hpiy : row.일요일운영시간 });*/
+            응답.render('hplist');
         });
     }
 );
