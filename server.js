@@ -2,7 +2,7 @@ const express = require('express');
 const app = express(); // express 서버 생성
 const port = process.env.PORT || 3000;
 
-const sqlite3 = require("sqlite3").verbose();
+/*const sqlite3 = require("sqlite3").verbose();
 
 const db = new sqlite3.Database('./data/mapdata.db',sqlite3.OPEN_READWRITE, (err)=> {
 
@@ -10,12 +10,19 @@ const db = new sqlite3.Database('./data/mapdata.db',sqlite3.OPEN_READWRITE, (err
 
     console.log("connection successful");
 
-});
+});*/
 // get : 읽기(사이트) , post : 쓰기(댓글작성), put: 수정, delete: 삭제(댓글) 
  // 메인 페이지
 app.get('/', function(요청, 응답){
     응답.sendFile(__dirname + '/main.html');
-    var hpname = `SELECT 병원명 from '병원';`;
+    
+    
+});
+
+app.get('/search', function(요청, 응답){
+    응답.sendFile(__dirname + '/search.html');
+    
+    /*var hpname = `SELECT 병원명 from '병원';`;
     db.all(hpname, function(err, rows){
         rows.forEach(function (row){
             console.log(row);
@@ -28,16 +35,10 @@ app.get('/', function(요청, 응답){
                  hpiy : row.일요일운영시간 });
         });
     }
-);
-    
-});
-
-app.get('/search', function(요청, 응답){
-    응답.sendFile(__dirname + '/search.html');
-    
+);*/
 });
 app.get('/pet', function(요청, 응답){
-    응답.send('펫 용품 쇼핑 할 수 있는 페이지 입니다.');
+    
     
 });
 
