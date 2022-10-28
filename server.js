@@ -27,12 +27,12 @@ app.get('/search', function(요청, 응답){
         rows.forEach(function (row){
             console.log(row);
 
-            응답.render('hplist', { hpname : row.병원명,
+            /*응답.render('hplist', { hpname : row.병원명,
                  hpaddress : row.주소, 
                  hptel : row.전화번호,
                  hppy : row.평일운영시간,
                  hpty : row.토요일운영시간,
-                 hpiy : row.일요일운영시간 });
+                 hpiy : row.일요일운영시간 });*/
         });
     }
 );
