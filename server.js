@@ -11,6 +11,9 @@ const db = new sqlite3.Database('./data/mapdata.db',sqlite3.OPEN_READWRITE, (err
     console.log("connection successful");
 
 });
+
+app.set('view engine', 'ejs');
+
 // get : 읽기(사이트) , post : 쓰기(댓글작성), put: 수정, delete: 삭제(댓글) 
  // 메인 페이지
 app.get('/', function(요청, 응답){
@@ -27,17 +30,15 @@ app.get('/search', function(요청, 응답){
         rows.forEach(function (row){
             console.log(row);
 
-            /*응답.render('hplist', { hpname : row.병원명,
+            응답.render('hplist', { hpname : row.병원명,
                  hpaddress : row.주소, 
                  hptel : row.전화번호,
                  hppy : row.평일운영시간,
                  hpty : row.토요일운영시간,
-                 hpiy : row.일요일운영시간 });*/
-            응답.render('hplist');
+                 hpiy : row.일요일운영시간 });
+
         });
     });
-
-    응답.render('hplist');
 });
 app.get('/pet', function(요청, 응답){
     
