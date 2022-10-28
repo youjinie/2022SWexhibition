@@ -13,7 +13,7 @@ const db = new sqlite3.Database('./data/mapdata.db',sqlite3.OPEN_READWRITE, (err
 });
 
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views/ejs');
+
 
 // get : 읽기(사이트) , post : 쓰기(댓글작성), put: 수정, delete: 삭제(댓글) 
  // 메인 페이지
