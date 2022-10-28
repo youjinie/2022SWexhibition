@@ -2,7 +2,7 @@ const express = require('express');
 const app = express(); // express 서버 생성
 const port = process.env.PORT || 3000;
 
-/*const sqlite3 = require("sqlite3").verbose();
+const sqlite3 = require("sqlite3").verbose();
 
 const db = new sqlite3.Database('./data/mapdata.db',sqlite3.OPEN_READWRITE, (err)=> {
 
@@ -10,7 +10,7 @@ const db = new sqlite3.Database('./data/mapdata.db',sqlite3.OPEN_READWRITE, (err
 
     console.log("connection successful");
 
-});*/
+});
 // get : 읽기(사이트) , post : 쓰기(댓글작성), put: 수정, delete: 삭제(댓글) 
  // 메인 페이지
 app.get('/', function(요청, 응답){
