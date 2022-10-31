@@ -42,11 +42,12 @@ app.get('/search', function(요청, 응답){
         });
     });
 });
-app.get('/pet', function(요청, 응답){
+
+app.get('/searh', function(요청, 응답){
+    응답.sendFile(__dirname + '/search.html');
     
     
 });
-
 
 app.listen(port,()=> console.log(`Example app listening on port ${port}`));
 
