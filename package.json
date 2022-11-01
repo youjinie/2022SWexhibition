@@ -9,7 +9,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "satrt": "sever.js",
+    "start": "sever.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
