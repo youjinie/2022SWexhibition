@@ -3,7 +3,7 @@ const app = express(); // express 서버 생성
 const port = process.env.PORT || 3000;
 const sqlite3 = require("sqlite3").verbose();
 
-app.use(express.static(__dirname )); // nodejs에서는 css파일이 바로 안열림  서버에서 해당 파일을 제공하지 못함 따라서 express.static 미들웨어 함수에 해당 파일을 전달하면 됨
+//app.use(express.static(__dirname )); // nodejs에서는 css파일이 바로 안열림  서버에서 해당 파일을 제공하지 못함 따라서 express.static 미들웨어 함수에 해당 파일을 전달하면 됨
 
 const db = new sqlite3.Database('C:user\OneDrive\바탕 화면\capstone\data\mapdata.db', sqlite3.OPEN_READWRITE, (err) => {
 
@@ -50,3 +50,4 @@ app.get('/search', function (요청, 응답) {
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`));
+
