@@ -50,4 +50,3 @@ app.get('/search', function (요청, 응답) {
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`));
-
