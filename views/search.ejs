@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
 
     <script type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=usxa85bak8"></script>
-        
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
@@ -73,7 +74,7 @@
             -->
             <div class="mapBlock">
                 <div id="map" style="width : 100%; height:600px;"></div>
-
+                <script src="map.js" type = "module"></script>
             </div>
 
             <!--
@@ -90,7 +91,7 @@
                     </span>
                 </select>
                 <form>
-                    <span><input id = "b1" name="location"  type="button" value="현재 위치 "></span>
+                    <span><input id="b1" name="location" type="button" value="현재 위치 "></span>
                 </form>
                 <!--
                 <br>
@@ -101,34 +102,34 @@
             <div class="hsplistBlock">
                 <form>
                     <ul id="hsplist">
-                        <% for(var i=0; i<model.length; i++){ %>
-                            <li onclick = "location.href='search'">
+                            <% for(var i=0; i<model.length; i++){ %>
+                                <li onclick="location.href='search'">
                                     <div id="hsp1">
-                                    <!--<input type="image" name="병원사진" alt="병원이름 + 사진" src="">-->
-                                    <span id="hspName">
-                                        <%= model[i].병원명 %>
-                                    </span>
-                                    <span id="hspAdd">
-                                        <%= model[i].주소 %>
-                                    </span>
-                                    <span id="hspTel">
-                                        <%= model[i].전화번호 %>
-                                    </span>
-                                    <span id="hspTime1">
-                                        <%= model[i].평일운영시간 %>
-                                    </span>
-                                    <span id="hspTime2">
-                                        <%= model[i].토요일운영시간 %>
-                                    </span>
-                                    <span id="hspTime3">
-                                        <%= model[i].일요일운영시간 %>
-                                    </span>
-                                    <input type="button" id="btnRes" value="예약 하기">
-                                </div>
-                            
-                            </li>
-                            <% } %>
-                                <!--<li>
+                                        <!--<input type="image" name="병원사진" alt="병원이름 + 사진" src="">-->
+                                        <span id="hspName">
+                                            <%= model[i].병원명 %>
+                                        </span>
+                                        <span id="hspAdd">
+                                            <%= model[i].주소 %>
+                                        </span>
+                                        <span id="hspTel">
+                                            <%= model[i].전화번호 %>
+                                        </span>
+                                        <span id="hspTime1">
+                                            <%= model[i].평일운영시간 %>
+                                        </span>
+                                        <span id="hspTime2">
+                                            <%= model[i].토요일운영시간 %>
+                                        </span>
+                                        <span id="hspTime3">
+                                            <%= model[i].일요일운영시간 %>
+                                        </span>
+                                        <input type="button" id="btnRes" value="예약 하기">
+                                    </div>
+
+                                </li>
+                                <% } %>
+                                    <!--<li>
                             <div id="hsp2">
                                 <input type="image" name="병원사진" alt="병원이름 + 사진" src="">
                                 <span id="hspName">병원 명2</span>
@@ -159,6 +160,5 @@
         <!--사이트 정보-->
     </footer>
 </body>
-<script src="map.js"></script>
 
 </html>

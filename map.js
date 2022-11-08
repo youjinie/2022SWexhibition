@@ -1,5 +1,6 @@
 
 $(document).ready(async function () {
+
     let XY = await getLocation(); // 사용자의 위도와 경도를 받아옴
 
     var map = new naver.maps.Map('map', { // 지도 띄우기
@@ -12,7 +13,7 @@ $(document).ready(async function () {
     });
 
     maker(XY.lat, XY.lng); // 현재 위치에 마커 찍기 
-  //  maker(model[0].위도, model[0].경도);
+
     function maker(lat, lng) { // 마커 찍는 함수 
         var marker = new naver.maps.Marker({
             position: new naver.maps.LatLng(lat, lng),
@@ -33,6 +34,8 @@ $(document).ready(async function () {
     };
 
 });
+
+
 async function getLocation() { // 접속한사람 위치 조회
     let XY = new Object(); // 위치 반환할 것
 
