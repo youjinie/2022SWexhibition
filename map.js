@@ -12,29 +12,17 @@ $(document).ready(async function () {
         }
     });
 
-    maker(XY.lat, XY.lng); // 현재 위치에 마커 찍기 
-
-    function maker(lat, lng) { // 마커 찍는 함수 
-        var marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(lat, lng),
-            map: map
-        });
-    }
-    
-
-    var infoWindow = new naver.maps.InfoWindow({
-        anchorSkew: true
-    });
-
-
     var location = new naver.maps.LatLng(XY.lat, XY.lng); // 현재 위치 위도 경도
     b1.onclick = function () { // 현재 위치 버튼 누를시 
         map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
         map.setZoom(17);
+        var marker = new naver.maps.Marker({ // 마커찍기
+            position: new naver.maps.LatLng(XY.lat, XY.lng),
+            map: map
+        });
     };
 
 });
-
 
 async function getLocation() { // 접속한사람 위치 조회
     let XY = new Object(); // 위치 반환할 것

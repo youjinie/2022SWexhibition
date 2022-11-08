@@ -10,6 +10,7 @@
         
     <script type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=usxa85bak8"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
@@ -105,6 +106,8 @@
             <div class="hsplistBlock">
                 <form>
                     <ul id="hsplist">
+                        var a = <% = model[i].위도 %>
+                        var b = <% = model[i].경도 %>
                         <% for(var i=0; i<model.length; i++){ %>
                             <li>
 
