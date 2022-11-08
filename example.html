@@ -14,6 +14,15 @@
         <input id="address" type="text" placeholder="검색 할 주소">
         <input id="submit" type="button" value="주소 검색">
     </div> -->
+    <div class="searchBlock">
+        <form>
+            <input id="searchVal" name="search" type="text" placeholder="이름을 입력해주세요 ">
+            <!--이미지 소스 삽입  + 앵커 삽입-->
+            <a href="#map"><input id="btnSearch" name="btnSearch" type="image" src="searchICON.png"
+                    alt="검색"></a>
+        </form>
+    </div>
+    
     <div id="map" style="width : 100%; height:600px;"></div>
     <button id="b1"> 현재 내 위치 </button>
 </body>
@@ -34,8 +43,6 @@
         var infoWindow = new naver.maps.InfoWindow({
             anchorSkew: true
         });
-
-        map.setCursor('pointer');
 
         // function searchCoordinateToAddress(latlng) {
 
@@ -132,28 +139,22 @@
                 return;
             }
 
-            map.addListener('click', function (e) {
-                searchCoordinateToAddress(e.coord);
-            });
-
-            $('#address').on('keydown', function (e) {
+            $('#searchVal').on('keydown', function (e) {
                 var keyCode = e.which;
 
                 if (keyCode === 13) { // Enter Key
-                    searchAddressToCoordinate($('#address').val());
+                    searchAddressToCoordinate($('#searchVal').val());
                 }
             });
 
-            $('#submit').on('click', function (e) {
+            $('#btnSearch').on('click', function (e) {
                 e.preventDefault();
 
-                searchAddressToCoordinate($('#address').val());
+                searchAddressToCoordinate($('#searchVal').val());
             });
-
-            searchAddressToCoordinate('한림대학길 1');
         }
 
-       // naver.maps.onJSContentLoaded = initGeocoder;
+        naver.maps.onJSContentLoaded = initGeocoder;
         naver.maps.Event.once(map, 'init_stylemap', initGeocoder);
 
         
