@@ -12,7 +12,7 @@ $(document).ready(async function () {
     });
 
     maker(XY.lat, XY.lng); // 현재 위치에 마커 찍기 
-
+  //  maker(model[0].위도, model[0].경도);
     function maker(lat, lng) { // 마커 찍는 함수 
         var marker = new naver.maps.Marker({
             position: new naver.maps.LatLng(lat, lng),

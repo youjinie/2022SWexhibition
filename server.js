@@ -35,9 +35,9 @@ app.get('/search', function (요청, 응답) {
             //console.log(rows[0]);
             //응답.render("hospital", {model: row});
         });
-        응답.render('search',{model: rows});
+        응답.render('search', { model: rows });
 
-        
+
     });
 });
 
