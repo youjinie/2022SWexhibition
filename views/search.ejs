@@ -107,7 +107,7 @@
                         wid = wido;
                         gyd = gyeongdo;
 
-                        var location = new naver.maps.LatLng(wid, gyd); // 현재 위치 위도 경도
+                        var location = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
                         var map = new naver.maps.Map('map', { // 지도 띄우기
                             center: new naver.maps.LatLng(wid, gyd),
                             zoom: 17,
@@ -116,13 +116,13 @@
                                 position: naver.maps.Position.TOP_RIGHT
                             }
                         });
-                        function maker(lat, lng) { // 마커 찍는 함수 
+                        function maker(lat, lng) { // 누른 버튼의 마커 찍기
                             var marker = new naver.maps.Marker({
                                 position: new naver.maps.LatLng(lat, lng),
                                 map: map
                             });
                         }
-                        maker(wid, gyd)
+                        maker(wid, gyd);
 
                     }
 
