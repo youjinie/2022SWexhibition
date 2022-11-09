@@ -75,7 +75,7 @@
             -->
             <div class="mapBlock">
                 <div id="map" style="width : 100%; height:600px;"></div>
-                <script src="map.js" type="module"></script>
+                <script src="map.js"></script>
 
             </div>
 
@@ -102,11 +102,13 @@
             </div>
 
             <div class="hsplistBlock">
-                <script>
-                    function savewg(wido, gyeongdo) {
+                <script>    
+                    
+                    function savewg(hpName, wido, gyeongdo) {
+                        hp = hpName;
                         wid = wido;
                         gyd = gyeongdo;
-
+                        
                         var location = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
                         var map = new naver.maps.Map('map', { // 지도 띄우기
                             center: new naver.maps.LatLng(wid, gyd),
@@ -116,13 +118,32 @@
                                 position: naver.maps.Position.TOP_RIGHT
                             }
                         });
-                        function maker(lat, lng) { // 누른 버튼의 마커 찍기
-                            var marker = new naver.maps.Marker({
-                                position: new naver.maps.LatLng(lat, lng),
-                                map: map
-                            });
-                        }
-                        maker(wid, gyd);
+
+                        var contentString = [
+                            '<div class="iw_inner">',
+                            '   <h3>' + hp + '</h3>',
+                            '</div>'
+                        ].join('');
+
+                        var infowindow = new naver.maps.InfoWindow({ // 정보창 띄위기
+                            content: contentString
+                        });
+                        
+
+                        var marker = new naver.maps.Marker({
+                            position: new naver.maps.LatLng(wid, gyd),
+                            map: map
+                        });
+                        
+                        infowindow.open(map, marker);
+
+                        naver.maps.Event.addListener(marker, "click", function (e) {
+                            if (infowindow.getMap()) {
+                                infowindow.close();
+                            } else {
+                                infowindow.open(map, marker);
+                            }
+                        })
 
                     }
 
@@ -134,7 +155,7 @@
 
 
                         <% for(var i=0; i<model.length; i++){ %>
-                            <li id=<%=model[i].id %> onclick='savewg(<%= model[i].위도 %>,<%= model[i].경도 %>)'>
+                            <li id=<%=model[i].id %> onclick='savewg("<%= model[i].병원명%>",<%= model[i].위도 %>,<%= model[i].경도 %>)'>
                                         <!-- <li onclick="location.href='search'"> -->
 
                                         <div id="hsp1">
