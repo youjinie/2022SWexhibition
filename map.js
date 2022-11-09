@@ -1,32 +1,33 @@
-
+var HOME_PATH = window.HOME_PATH || '.';
 $(document).ready(async function () {
 
     let XY = await getLocation(); // 사용자의 위도와 경도를 받아옴
 
     var map = new naver.maps.Map('map', { // 지도 띄우기
         center: new naver.maps.LatLng(XY.lat, XY.lng),
-        zoom: 8,
+        zoom: 14,
         zoomControl: true, //줌 컨트롤의 표시 여부
         zoomControlOptions: { //줌 컨트롤의 옵션
             position: naver.maps.Position.TOP_RIGHT
         }
     });
-    var HOME_PATH = window.HOME_PATH || '.';
+
+    var marker = new naver.maps.Marker({ // 마커찍기
+        position: new naver.maps.LatLng(XY.lat, XY.lng),
+        map: map,
+        icon: { //마커 이미지 변경 
+            url: HOME_PATH +'./icon.png',
+            scaledSize: new naver.maps.Size(40, 40),
+            origin: new naver.maps.Point(0, 0)
+        }
+    });
+
 
     var location = new naver.maps.LatLng(XY.lat, XY.lng); // 현재 위치 위도 경도
+
     b1.onclick = function () { // 현재 위치 버튼 누를시 
         map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
         map.setZoom(17);
-        var marker = new naver.maps.Marker({ // 마커찍기
-            position: new naver.maps.LatLng(XY.lat, XY.lng),
-            map: map,
-            icon: {
-                url: HOME_PATH + 'human.png',
-                size: new naver.maps.Size(50, 52),
-                origin: new naver.maps.Point(0, 0),
-                anchor: new naver.maps.Point(25, 26)
-            }
-        });
         
     };
 
