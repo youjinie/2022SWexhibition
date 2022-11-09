@@ -11,6 +11,7 @@ $(document).ready(async function () {
             position: naver.maps.Position.TOP_RIGHT
         }
     });
+    var HOME_PATH = window.HOME_PATH || '.';
 
     var location = new naver.maps.LatLng(XY.lat, XY.lng); // 현재 위치 위도 경도
     b1.onclick = function () { // 현재 위치 버튼 누를시 
@@ -18,8 +19,15 @@ $(document).ready(async function () {
         map.setZoom(17);
         var marker = new naver.maps.Marker({ // 마커찍기
             position: new naver.maps.LatLng(XY.lat, XY.lng),
-            map: map
+            map: map,
+            icon: {
+                url: HOME_PATH + 'human.png',
+                size: new naver.maps.Size(50, 52),
+                origin: new naver.maps.Point(0, 0),
+                anchor: new naver.maps.Point(25, 26)
+            }
         });
+        
     };
 
 });

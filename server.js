@@ -41,6 +41,21 @@ app.get('/search', function (요청, 응답) {
     });
 });
 
+app.get('/search.html', function (요청, 응답) {
+    //응답.sendFile(__dirname + '/search.ejs');
+
+    var sql = `SELECT * from '병원';`;
+    db.all(sql, function (err, rows) {
+        rows.forEach(function (row) {
+            //console.log(rows[0]);
+            //응답.render("hospital", {model: row});
+        });
+        응답.render('search', { model: rows });
+
+
+    });
+});
+
 app.get('/api/hospitals', function (요청, 응답) {
 
     var sql = `SELECT * from '병원';`;
