@@ -11,7 +11,7 @@ $(document).ready(async function () {
             position: naver.maps.Position.TOP_RIGHT
         }
     });
-
+    
     var marker = new naver.maps.Marker({ // 마커찍기
         position: new naver.maps.LatLng(XY.lat, XY.lng),
         map: map,

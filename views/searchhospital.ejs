@@ -48,10 +48,10 @@
         <section>
             <div class="ChoicebtnBlock">
                 <!--버튼으로 변경-->
-                <button type="button" id="hospital" onclick="location.href='search'">병원</button>
-                <button type="button" id="pharmacy" onclick="location.href='search'">약국</button>
-                <button type="button" id="station" onclick="location.href='search'">선별진료소</button>
-                <button type="button" id="isolation" onclick="location.href='search'">격리시설</button>
+                <button type="button" id="hospital" onclick="location.href='searchhospital'">병원</button>
+                <button type="button" id="pharmacy" onclick="location.href='searchpharmacy'">약국</button>
+                <button type="button" id="pcrCenter" onclick="location.href='searchpcrCenter'">선별진료소</button>
+                <button type="button" id="isolation" onclick="location.href='searchisolation'">격리시설</button>
             </div>
         </section>
 
@@ -60,23 +60,23 @@
         <br>-->
 
         <section>
+            <!-- 네이버 지도 관련 자바 스크립트 파일 불러오기 -->
+            <script src="map.js"></script>
+
+            <div class="mapBlock">
+                <div id="map" style="width : 100%; height:300px;"></div>
+            </div>
+
+            <!--검색 바 위치 변경 : 지도 위 -> 지도 밑으로 -->
             <div class="searchBlock">
                 <form>
                     <input id="searchVal" name="search" type="text" placeholder="이름을 입력해주세요 ">
+
                     <!--이미지 소스 삽입  + 앵커 삽입-->
                     <a href="#map"><input id="btnSearch" name="btnSearch" type="image" src="searchICON.png"
                             alt="검색"></a>
+
                 </form>
-            </div>
-
-            <!--
-            <br>
-            <hr>
-            -->
-            <div class="mapBlock">
-                <div id="map" style="width : 100%; height:600px;"></div>
-                <script src="map.js"></script>
-
             </div>
 
             <!--
@@ -93,10 +93,7 @@
                     </span>
                 </select>
                 <form>
-                    <span>
-                        <!-- <button id="b1" type = "button" name="location">현재위치</button> -->
-                        <input id="b1" name="location" type="button" value="현재 위치 ">
-                    </span>
+                    <span><input id="b1" name="location" type="button" value="현재 위치 "></span>
                 </form>
                 <!--
                 <br>
@@ -104,14 +101,14 @@
                 -->
             </div>
 
-            <div class="hsplistBlock">
-                <script>    
-                    
+            <div class="resBlock">
+                <script>
+
                     function savewg(hpName, wido, gyeongdo) {
                         hp = hpName;
                         wid = wido;
                         gyd = gyeongdo;
-                        
+
                         var location = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
                         var map = new naver.maps.Map('map', { // 지도 띄우기
                             center: new naver.maps.LatLng(wid, gyd),
@@ -131,13 +128,13 @@
                         var infowindow = new naver.maps.InfoWindow({ // 정보창 띄위기
                             content: contentString
                         });
-                        
+
 
                         var marker = new naver.maps.Marker({
                             position: new naver.maps.LatLng(wid, gyd),
                             map: map
                         });
-                        
+
                         infowindow.open(map, marker);
 
                         naver.maps.Event.addListener(marker, "click", function (e) {
@@ -154,60 +151,49 @@
                 </script>
 
                 <form>
-                    <ul id="hsplist">
-
-
-                        <% for(var i=0; i<model.length; i++){ %>
-                            <li id=<%=model[i].id %> onclick='savewg("<%= model[i].병원명%>",<%= model[i].위도 %>,<%= model[i].경도 %>)'>
-                                        <!-- <li onclick="location.href='search'"> -->
-
-                                        <div id="hsp1">
-                                            <!--<input type="image" name="병원사진" alt="병원이름 + 사진" src="">-->
-                                            <span id="hspName">
-                                                <%= model[i].병원명 %>
-                                            </span>
-                                            <span id="hspAdd">
-                                                <%= model[i].주소 %>
-                                            </span>
-                                            <span id="hspTel">
-                                                <%= model[i].전화번호 %>
-                                            </span>
-                                            <span id="hspTime1">
-                                                <%= model[i].평일운영시간 %>
-                                            </span>
-                                            <span id="hspTime2">
-                                                <%= model[i].토요일운영시간 %>
-                                            </span>
-                                            <span id="hspTime3">
-                                                <%= model[i].일요일운영시간 %>
-                                            </span>
-                                            <input type="button" id="btnRes" value="예약 하기">
-                                        </div>
-
-                            </li>
-                            <% } %>
-                                <!--<li>
-                            <div id="hsp2">
-                                <input type="image" name="병원사진" alt="병원이름 + 사진" src="">
-                                <span id="hspName">병원 명2</span>
-                                <span id="hspAdd">병원 주소2</span>
-                                <span id="hspTel">033-0000-0000</span>
-                                <span id="hspTime">운영시간 ~18:00 [일요일 휴무]</span>
-                                <input type="button" id="btnRes" value="예약 하기">
+                    <ul id="reslist">
+                        <% for(var i = 0; i<model.length; i++){ %>
+                        <li id=<%=model[i].id %> onclick='savewg("<%= model[i].병원명%>",<%= model[i].위도 %>,<%= model[i].경도 %>)'>
+                            <div>
+                                <img id="img" name="사진" alt="사진" src="">
                             </div>
+                            <div class="inform">
+                                <span id="name">
+                                    <%= model[i].병원명 %>
+                                </span>
+                                <span id="tel"> |
+                                    <%= model[i].전화번호 %>
+                                </span><br>
+                                <span id="address">
+                                    <%= model[i].주소 %>
+                                </span><br>
+                                <br>
+
+                                <span class="time">평일
+                                    <%= model[i].평일운영시간 %>
+                                </span><br>
+                                <span class="time">토요일
+                                    <%= model[i].토요일운영시간 %>
+                                </span><br>
+                                <span class="time">일요일
+                                    <%= model[i].일요일운영시간 %>
+                                </span>
+                            </div>
+
+                            <!--예약 버튼 클릭 시 예약 팝업창 뜨도록-->
+                            <a href="#pop1" class="btn"><input type="button" id="btnReserve" value="예약 하기"></a>
+
+                            <!--가려질 부분 / opacity : 0-->
+                            <div class="popup" id="pop1">
+                                <a href="#a">닫기</a>
+                            </div>
+                            <div class="dim">
+
+                            </div>
+                            <!--여기까지-->
                         </li>
-                        <li>
-                            <div id="hsp2">
-                                <input type="image" name="병원사진" alt="병원이름 + 사진" src="">
-                                <span id="hspName">병원 명2</span>
-                                <span id="hspAdd">병원 주소2</span>
-                                <span id="hspTel">033-0000-0000</span>
-                                <span id="hspTime">운영시간 ~18:00 [일요일 휴무]</span>
-                                <input type="button" id="btnRes" value="예약 하기">
-                            </div>
-                        </li>-->
-                    </ul>
-                    <span><input name="add" type="button" value="더보기"></span>
+                        <% } %>
+                    <!--<span><input name="add" type="button" value="더보기"></span>-->
                 </form>
             </div>
         </section>
@@ -215,6 +201,13 @@
 
     <footer>
         <!--사이트 정보-->
+        <div id="bottomContents">
+            <span>이미지1</span>
+            <span>이미지2</span>
+            <span>이미지3</span>
+            사이트 정보 입력 예정
+        </div>
+    </footer>
     </footer>
 </body>
 
