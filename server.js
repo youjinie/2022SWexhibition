@@ -22,36 +22,74 @@ app.get('/', function (요청, 응답) {
     응답.sendFile(__dirname + '/mainPG.html');
 });
 
-app.get('/hi', function (요청, 응답) {
-    응답.sendFile(__dirname + '/example.html');
-});
-
-app.get('/search', function (요청, 응답) {
-    //응답.sendFile(__dirname + '/search.ejs');
+app.get('/searchhospital', function(요청, 응답){
+    //응답.sendFile(__dirname + '/search.html');
 
     var sql = `SELECT * from '병원';`;
-    db.all(sql, function (err, rows) {
-        rows.forEach(function (row) {
-            //console.log(rows[0]);
+    db.all(sql, function(err, rows){
+        rows.forEach(function (row){
+            console.log(rows[0]);
+
             //응답.render("hospital", {model: row});
         });
-        응답.render('search', { model: rows });
-
+        응답.render('searchhospital',{model: rows});
 
     });
 });
 
+app.get('/searchpharmacy', function(요청, 응답){
+    //응답.sendFile(__dirname + '/search.html');
 
-app.get('/api/hospitals', function (요청, 응답) {
+    var sql = `SELECT * from '약국';`;
+    db.all(sql, function(err, rows){
+        rows.forEach(function (row){
+            console.log(rows[0]);
+
+            //응답.render("hospital", {model: row});
+        });
+        응답.render('searchpharmacy',{model: rows});
+
+    });
+});
+
+app.get('/searchpcrCenter', function(요청, 응답){
+    //응답.sendFile(__dirname + '/search.html');
+
+    var sql = `SELECT * from '선별진료소';`;
+    db.all(sql, function(err, rows){
+        rows.forEach(function (row){
+            console.log(rows[0]);
+
+            //응답.render("hospital", {model: row});
+        });
+        응답.render('searchpcrCenter',{model: rows});
+
+    });
+});
+
+app.get('/searchisolation', function(요청, 응답){
+    //응답.sendFile(__dirname + '/search_isolation.html');
+    응답.render('searchisolation');
+    /*var sql = `SELECT * from '병원';`;
+    db.all(sql, function(err, rows){
+        rows.forEach(function (row){
+            console.log(rows[0]);
+            //응답.render("hospital", {model: row});
+        });
+        응답.render('searchisolation',{model: rows});
+    });*/
+});
+
+app.get('/api/hospitals', function(요청, 응답){
 
     var sql = `SELECT * from '병원';`;
-    db.all(sql, function (err, rows) {
-        rows.forEach(function (row) {
+    db.all(sql, function(err, rows){
+        rows.forEach(function (row){
             //console.log(rows[0]);
 
             //응답.render("hospital", {model: row});
         });
-        응답.render('hospital', { model: rows });
+        응답.render('hospital',{model: rows});
 
     });
     /*const test = {
@@ -61,61 +99,62 @@ app.get('/api/hospitals', function (요청, 응답) {
       응답.render("hospital", {model: test});*/
 });
 
-app.get('/api/pharmacy', function (요청, 응답) {
+app.get('/api/pharmacy', function(요청, 응답){
 
-    var sql = `SELECT * from '약국', '24시 편의점';`;
-    db.all(sql, function (err, rows) {
-        rows.forEach(function (row) {
-            //console.log(rows[0]);
+    var sql = `SELECT * from '약국';`;
 
-            //응답.render("hospital", {model: row});
+    db.all(sql, function(err, rows){
+        rows.forEach(function (row){
+            //console.log(row);
+
+            //응답.render("pharmacy", {model: row});
         });
-        응답.render('pharmacy', { model: rows });
+        응답.render('pharmacy',{model: rows});
 
     });
+
 });
 
-app.get('/api/sbjinryoso', function (요청, 응답) {
+app.get('/api/sbjinryoso', function(요청, 응답){
 
     var sql = `SELECT * from '선별진료소';`;
-    db.all(sql, function (err, rows) {
-        rows.forEach(function (row) {
+    db.all(sql, function(err, rows){
+        rows.forEach(function (row){
             //console.log(rows[0]);
 
             //응답.render("hospital", {model: row});
         });
-        응답.render('sbjinryoso', { model: rows });
+        응답.render('sbjinryoso',{model: rows});
 
     });
 });
 
-app.get("/pharmach_list", (req, res) => {
+app.get("/pharmach_list", (req, res) =>{
 
-    let api = async () => {
-        let response = null;
-        try {
+    let api = async() => {
+        let response =  null;
+            try{
             //http://api.odcloud.kr/api/3033733/v1/uddi:835b1c55-fbaf-45ee-936e-83b92b3c2a8d?page=1&perPage=10&returnType=XML&serviceKey=bb2DyTkLtZ69N9NXxrrn9JDou2Rshqy2nscuvs%2BPCKEv7NapMVsqMSJlxsXYHIs46GNI82Jp7qYApFEMokq5Jw%3D%3D
             response = await axios.get("http://api.odcloud.kr/api/3033733/v1/uddi:835b1c55-fbaf-45ee-936e-83b92b3c2a8d", {
-                params: {
-                    "serviceKey": "bb2DyTkLtZ69N9NXxrrn9JDou2Rshqy2nscuvs+PCKEv7NapMVsqMSJlxsXYHIs46GNI82Jp7qYApFEMokq5Jw==",
-                    "page": req.query.page,
-                    "perPage": req.query.perPage,
-                    "returnType": req.query.returnType
+                params:{
+                    "serviceKey" : "bb2DyTkLtZ69N9NXxrrn9JDou2Rshqy2nscuvs+PCKEv7NapMVsqMSJlxsXYHIs46GNI82Jp7qYApFEMokq5Jw==",
+                    "page" : req.query.page,
+                    "perPage" : req.query.perPage,
+                    "returnType" : req.query.returnType
 
                 }
             });
         }
-        catch (e) {
+        catch(e){
             console.log(e);
         }
         return response;
     }
-    api().then((response) => {
+    api().then((response) =>{
         res.setHeader("Access Control Allow Origin", "*");
         res.json(response.data.response.body);
     });
 
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}`));
-
+app.listen(port,()=> console.log(`Example app listening on port ${port}`));
