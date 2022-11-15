@@ -94,14 +94,9 @@
                         gyd = gyeongdo;
 
                         var location = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
-                        var map = new naver.maps.Map('map', { // 지도 띄우기
-                            center: new naver.maps.LatLng(wid, gyd),
-                            zoom: 17,
-                            zoomControl: true, //줌 컨트롤의 표시 여부
-                            zoomControlOptions: { //줌 컨트롤의 옵션
-                                position: naver.maps.Position.TOP_RIGHT
-                            }
-                        });
+
+                        map.setCenter(location);
+                        map.setZoom(17);
 
                         var contentString = [
                             '<div class="iw_inner">',
@@ -133,50 +128,51 @@
 
 
                 </script>
-<form>
+                <form>
                     <ul id="reslist">
-                        <% for(var i = 0; i<model.length; i++){ %>
-                        <li id=<%=model[i].id %> onclick='savewg("<%= model[i].선별진료소명%>",<%= model[i].위도 %>,<%= model[i].경도 %>)'>
-                            <div>
-                                <img id="img" name="사진" alt="사진" src="">
-                            </div>
-                            <div class="inform">
-                                <span id="name">
-                                    <%= model[i].선별진료소명 %>
-                                </span>
-                                <span id="tel"> |
-                                    <%= model[i].전화번호 %>
-                                </span><br>
-                                <span id="address">
-                                    <%= model[i].주소 %>
-                                </span><br>
-                                <br>
+                        <% for(var i=0; i<model.length; i++){ %>
+                            <li id=<%=model[i].id %> onclick='savewg("<%= model[i].선별진료소명%>",<%= model[i].위도 %>,<%=model[i].경도 %>)'>
+                                            <div>
+                                                <img id="img" name="사진" alt="사진" src="">
+                                            </div>
+                                            <div class="inform">
+                                                <span id="name">
+                                                    <%= model[i].선별진료소명 %>
+                                                </span>
+                                                <span id="tel"> |
+                                                    <%= model[i].전화번호 %>
+                                                </span><br>
+                                                <span id="address">
+                                                    <%= model[i].주소 %>
+                                                </span><br>
+                                                <br>
 
-                                <span class="time">평일
-                                    <%= model[i].평일운영시간 %>
-                                </span><br>
-                                <span class="time">토요일
-                                    <%= model[i].토요일운영시간 %>
-                                </span><br>
-                                <span class="time">일요일
-                                    <%= model[i].일요일운영시간 %>
-                                </span>
-                            </div>
+                                                <span class="time">평일
+                                                    <%= model[i].평일운영시간 %>
+                                                </span><br>
+                                                <span class="time">토요일
+                                                    <%= model[i].토요일운영시간 %>
+                                                </span><br>
+                                                <span class="time">일요일
+                                                    <%= model[i].일요일운영시간 %>
+                                                </span>
+                                            </div>
 
-                            <!--예약 버튼 클릭 시 예약 팝업창 뜨도록-->
-                            <a href="#pop1" class="btn"><input type="button" id="btnReserve" value="예약 하기"></a>
+                                            <!--예약 버튼 클릭 시 예약 팝업창 뜨도록-->
+                                            <a href="#pop1" class="btn"><input type="button" id="btnReserve"
+                                                    value="예약 하기"></a>
 
-                            <!--가려질 부분 / opacity : 0-->
-                            <div class="popup" id="pop1">
-                                <a href="#a">닫기</a>
-                            </div>
-                            <div class="dim">
+                                            <!--가려질 부분 / opacity : 0-->
+                                            <div class="popup" id="pop1">
+                                                <a href="#a">닫기</a>
+                                            </div>
+                                            <div class="dim">
 
-                            </div>
-                            <!--여기까지-->
-                        </li>
-                        <% } %>
-                    <!--<span><input name="add" type="button" value="더보기"></span>-->
+                                            </div>
+                                            <!--여기까지-->
+                            </li>
+                            <% } %>
+                                <!--<span><input name="add" type="button" value="더보기"></span>-->
                 </form>
             </div>
         </section>
