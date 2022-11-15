@@ -15,6 +15,7 @@ const db = new sqlite3.Database('./data/mapdata.db', sqlite3.OPEN_READWRITE, (er
 
 app.set('view engine', 'ejs');
 app.use(express.json())
+app.use(express.static(__dirname ));
 
 // get : 읽기(사이트) , post : 쓰기(댓글작성), put: 수정, delete: 삭제(댓글) 
 // 메인 페이지
@@ -24,11 +25,18 @@ app.get('/', function (요청, 응답) {
 
 app.get('/searchhospital', function(요청, 응답){
     //응답.sendFile(__dirname + '/search.html');
+    var name = 요청.query.search;
+    var sql = `SELECT * from 병원 order by 병원명;`;
+    if(typeof(name) != 'undefined'){
+        //console.log(name);
+        sql = `SELECT * FROM 병원 WHERE 병원명 LIKE "%` + name + `%" order by 병원명;`;
+        //console.log(sql);
+    }
 
-    var sql = `SELECT * from '병원';`;
+
     db.all(sql, function(err, rows){
         rows.forEach(function (row){
-            console.log(rows[0]);
+            //console.log(rows[0]);
 
             //응답.render("hospital", {model: row});
         });
@@ -39,11 +47,18 @@ app.get('/searchhospital', function(요청, 응답){
 
 app.get('/searchpharmacy', function(요청, 응답){
     //응답.sendFile(__dirname + '/search.html');
+    var name = 요청.query.search;
+    var sql = `SELECT * from '약국' order by 업체명;`;
 
-    var sql = `SELECT * from '약국';`;
+    if(typeof(name) != 'undefined'){
+        //console.log(name);
+        sql = `SELECT * FROM 약국 WHERE 업체명 LIKE "%` + name + `%" order by 업체명;`;
+        //console.log(sql);
+    }
+
     db.all(sql, function(err, rows){
         rows.forEach(function (row){
-            console.log(rows[0]);
+            //console.log(rows[0]);
 
             //응답.render("hospital", {model: row});
         });
@@ -54,11 +69,18 @@ app.get('/searchpharmacy', function(요청, 응답){
 
 app.get('/searchpcrCenter', function(요청, 응답){
     //응답.sendFile(__dirname + '/search.html');
+    var name = 요청.query.search;
+    var sql = `SELECT * from '선별진료소' order by 선별진료소명;`;
 
-    var sql = `SELECT * from '선별진료소';`;
+    if(typeof(name) != 'undefined'){
+        //console.log(name);
+        sql = `SELECT * FROM 선별진료소 WHERE 선별진료소명 LIKE "%` + name + `%" order by 선별진료소명;`;
+        //console.log(sql);
+    }
+
     db.all(sql, function(err, rows){
         rows.forEach(function (row){
-            console.log(rows[0]);
+            //console.log(rows[0]);
 
             //응답.render("hospital", {model: row});
         });
@@ -92,12 +114,7 @@ app.get('/api/hospitals', function(요청, 응답){
         응답.render('hospital',{model: rows});
 
     });
-    /*const test = {
-        title: "Test",
-        items: ["one", "two", "three"]
-      };
-      응답.render("hospital", {model: test});*/
-});
+});    
 
 app.get('/api/pharmacy', function(요청, 응답){
 
