@@ -94,14 +94,9 @@
                         gyd = gyeongdo;
 
                         var location = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
-                        var map = new naver.maps.Map('map', { // 지도 띄우기
-                            center: new naver.maps.LatLng(wid, gyd),
-                            zoom: 17,
-                            zoomControl: true, //줌 컨트롤의 표시 여부
-                            zoomControlOptions: { //줌 컨트롤의 옵션
-                                position: naver.maps.Position.TOP_RIGHT
-                            }
-                        });
+
+                        map.setCenter(location);
+                        map.setZoom(17);
 
                         var contentString = [
                             '<div class="iw_inner">',
