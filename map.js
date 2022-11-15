@@ -1,9 +1,9 @@
 var HOME_PATH = window.HOME_PATH || '.';
+
 $(document).ready(async function () {
 
-    let XY = await getLocation(); // 사용자의 위도와 경도를 받아옴
-
-    var map = new naver.maps.Map('map', { // 지도 띄우기
+    XY = await getLocation(); // 사용자의 위도와 경도를 받아옴    
+    map = new naver.maps.Map('map', { // 지도 띄우기
         center: new naver.maps.LatLng(XY.lat, XY.lng),
         zoom: 14,
         zoomControl: true, //줌 컨트롤의 표시 여부
@@ -12,6 +12,7 @@ $(document).ready(async function () {
         }
     });
 
+    var loc = new naver.maps.LatLng(XY.lat, XY.lng); // 현재 위치 위도 경도
     var marker = new naver.maps.Marker({ // 마커찍기
         position: new naver.maps.LatLng(XY.lat, XY.lng),
         map: map,
@@ -22,16 +23,16 @@ $(document).ready(async function () {
         }
     });
 
-
-    var location = new naver.maps.LatLng(XY.lat, XY.lng); // 현재 위치 위도 경도
-
-    b1.onclick = function () { // 현재 위치 버튼 누를시 
-        map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
+    b1.onclick = function () { // 현재 위치 버튼 누를시
+        map.setCenter(loc); // 얻은 좌표를 지도의 중심으로 설정합니다.
         map.setZoom(17);
-        
-    };
-
+    
+    };   
+    
 });
+
+
+
 
 async function getLocation() { // 접속한사람 위치 조회
     let XY = new Object(); // 위치 반환할 것
