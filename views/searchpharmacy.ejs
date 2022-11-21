@@ -26,7 +26,7 @@
                     <form>
                         <!--onClick 추가-->
                         <span><input id="logo" name="logo" type="button" value="사이트 로고"
-                                onClick="location.href='mainPG.html'" /></span>
+                                onClick="location.href='/'" /></span>
                         <span><input id="login" name="login" type="button" value="login" /></span>
                     </form>
                     <br><br>
@@ -44,7 +44,8 @@
             <div class="ChoicebtnBlock">
                 <!--11-08 서영 : button id 변경-->
                 <button type="button" id="hospital" onclick="location.href='searchhospital'">병원</button>
-                <button type="button" id="pharmacy" onclick="location.href='searchpharmacy'">약국</button>
+                <button type="button" id="pharmacy" onclick="location.href='searchpharmacy'">약국 / 편의점
+                </button>
                 <button type="button" id="pcrCenter" onclick="location.href='searchpcrCenter'">선별진료소</button>
                 <button type="button" id="isolation" onclick="location.href='searchisolation'">격리시설</button>
             </div>
@@ -71,14 +72,80 @@
                 </form>
             </div>
 
+            <script>
+                function indexSubmit() {
+                    $.ajax({
+                        data: { sOrt: jsonn },
+                        async: false,
+                        sucess: function (data) {
+                            console.log("index submit success!!");
+                        },
+                        error: function (requrest, status, error) {
+                            console.log(error);
+                        }
+                    });
+                    location.href = 'searchpharmacy_distance';
 
+
+                }
+
+                function sortWay() {
+                    var flag = true;
+                    sortIndex = [];
+                    jsonn = [];
+
+
+
+                    var sortSelect = document.getElementById("arrayhsp");
+                    var selectedWay = sortSelect.options[sortSelect.selectedIndex].value;
+
+                    if (selectedWay == "ganada") {
+                        location.href = "searchpharmacy";
+                    } else if (selectedWay == "distance") {
+                        var dist = [];
+
+                        <% for (var k = 0; k < model.length; k++) { %>
+                            var i = <%= k %>;
+                            var wid = <%= model[k].위도 %>;
+                            var gyd = <%= model[k].경도%>;
+
+                            var Wdist = Math.abs(mePosW - wid);
+                            var Gdist = Math.abs(mePosG - gyd);
+
+                            console.log(wid, gyd);
+                            dist.push([(Wdist + Gdist) / 2, i]);
+                        <% } %>
+
+                            dist.sort();
+                        console.log(dist);
+
+                        for (var i = 0; i < dist.length; i++) {
+                            sortIndex[i] = dist[i][1];
+                        }
+                    }
+
+                    for (var i = 0; i < dist.length; i++) {
+                        jsonn.push({
+                            dist: dist[i][0],
+                            index: dist[i][1]
+                        });
+                    }
+
+                    indexSubmit();
+
+
+                }
+
+
+
+            </script>
             <div class="arrayBlcok">
-                <select name="arrayhsp" id="arrayhsp">
+                <select name="arrayhsp" id="arrayhsp" onchange="sortWay()">
                     <span>
-                        <option value="distance">가나다 순</option>
+                        <option value="ganada">가나다 순</option>
                     </span>
                     <span>
-                        <option value="related">가까운 순</option>
+                        <option value="distance">가까운 순</option>
                     </span>
                 </select>
                 <form>
@@ -127,50 +194,84 @@
 
 
                 </script>
-<form>
+                <form>
                     <ul id="reslist">
-                        <% for(var i = 0; i<model.length; i++){ %>
-                        <li id=<%=model[i].id %> onclick='savewg("<%= model[i].업체명%>",<%= model[i].위도 %>,<%= model[i].경도 %>)'>
-                            <div>
-                                <img id="img" name="사진" alt="사진" src="">
-                            </div>
-                            <div class="inform">
-                                <span id="name">
-                                    <%= model[i].업체명 %>
-                                </span>
-                                <span id="tel"> |
-                                    <%= model[i].전화번호 %>
-                                </span><br>
-                                <span id="address">
-                                    <%= model[i].주소 %>
-                                </span><br>
-                                <br>
+                        <% for(var i=0; i<model.length; i++){ %>
+                            <li id=<%=model[i].id %> onclick='savewg("<%= model[i].업체명%>",<%= model[i].위도 %>,<%=
+                                            model[i].경도 %>)'>
+                                            <div>
+                                                <img id="img" name="사진" alt="사진" src="">
+                                            </div>
+                                            <div class="inform">
+                                                <span id="name">
+                                                    <%= model[i].업체명 %>
+                                                </span>
+                                                <span id="tel"> |
+                                                    <%= model[i].전화번호 %>
+                                                </span>
+                                                <span id="address">
+                                                    <%= model[i].주소 %>
+                                                </span>
 
-                                <span class="time">평일
-                                    <%= model[i].평일운영시간 %>
-                                </span><br>
-                                <span class="time">토요일
-                                    <%= model[i].토요일운영시간 %>
-                                </span><br>
-                                <span class="time">일요일
-                                    <%= model[i].일요일운영시간 %>
-                                </span>
-                            </div>
+                                                <span class="time">평일
+                                                    <%= model[i].평일운영시간 %>
+                                                </span>
+                                                <span class="time">토요일
+                                                    <%= model[i].토요일운영시간 %>
+                                                </span>
+                                                <span class="time">일요일
+                                                    <%= model[i].일요일운영시간 %>
+                                                </span>
+                                            </div>
 
-                            <!--예약 버튼 클릭 시 예약 팝업창 뜨도록-->
-                            <a href="#pop1" class="btn"><input type="button" id="btnReserve" value="예약 하기"></a>
+                                            <!--예약 버튼 클릭 시 예약 팝업창 뜨도록-->
+                                            <a href="#pop1" class="btn"><input type="button" id="btnReserve"
+                                                    value="예약 하기"></a>
 
-                            <!--가려질 부분 / opacity : 0-->
-                            <div class="popup" id="pop1">
-                                <a href="#a">닫기</a>
-                            </div>
-                            <div class="dim">
+                                            <!--가려질 부분 / opacity : 0-->
+                                            <div class="popup" id="pop1">
+                                                <a href="#a">닫기</a>
+                                                <div id="popupform">
+                                                    <form>
+                                                        <table>
+                                                            <tr>
+                                                                <td>이름 :</td>
+                                                                <td><input type="text"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>나이 :</td>
+                                                                <td><input type="text" placeholder="만 나이를 입력해주세요"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>증상 :</td>
+                                                                <td><textarea cols="23" rows="10"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>필요한 약 :</td>
+                                                                <td><input type="text"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>먹고 있는 약 :</td>
+                                                                <td><input type="text">
+                                                            <tr>
+                                                                <td>배달 원하는 시간 :</td>
+                                                                <td><textarea cols="23" rows="4"
+                                                                        placeholder="가능한 시간대를 모두 작성해주세요"></textarea>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <input id="btnSub" type="submit" value="제출"
+                                                            onclick="alert('제출이 완료되었습니다');location.href='#a'">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="dim">
 
-                            </div>
-                            <!--여기까지-->
-                        </li>
-                        <% } %>
-                    <!--<span><input name="add" type="button" value="더보기"></span>-->
+                                            </div>
+                                            <!--여기까지-->
+                            </li>
+                            <% } %>
+                                <!--<span><input name="add" type="button" value="더보기"></span>-->
                 </form>
             </div>
         </section>
