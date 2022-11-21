@@ -1,356 +1,552 @@
 /*검색 페이지 CSS*/
 
 body {
-    font-size: 10px;
-    width: 100%;
-    background: linear-gradient(90deg, #6A85B6 0%, #BAC8E0 100%);
+  font-size: 10px;
+  width: 100%;
+  background: linear-gradient(#7894be, whitesmoke);
 
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .title_main {
-    margin: 0;
-    width: 100%;
-    height: 20rem;
+  margin: 0;
+  width: 100%;
+  height: 20rem;
 }
 
 .title_bar {
-    color:white;
+  color: white;
 }
 
 #logo {
-    font-size:0.8rem;
-    color:white;
-    background: none;
-    border:0;
-    margin: 1rem;
-    float: left;
+  font-size: 0.8rem;
+  color: white;
+  background: none;
+  border: 0;
+  margin: 1rem;
+  float: left;
 }
 
 #login {
-    font-size:0.8rem;
-    color:white;
-    background: none;
-    border:0;
-    margin: 1rem 2rem;
-    float: right;
+  font-size: 0.8rem;
+  color: white;
+  background: none;
+  border: 0;
+  margin: 1rem 1rem;
+  float: right;
 }
 
 #title_txt01 {
-    width:100%;
-    margin: 6rem 0 0 0;
+  width: 100%;
+  margin: 6rem 0 0 0;
 
-    text-align: center;
-    font-size: 1rem;
-    color:white;
-    
+  text-align: center;
+  font-size: 1rem;
+  color: white;
 }
 
 #title_txt02 {
-    width:100%;
-    margin: 0 0 0 0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color:white;
-    text-align: center;
-
+  width: 100%;
+  margin: 0 0 0 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
 }
-
 
 /*main contents*/
-main {
+@media (min-width: 650px) {
+  main {
     margin: 0 15%;
+  }
 }
-
+@media (max-width: 650px) {
+  main {
+    margin: 0 3%;
+  }
+}
 /*주제 목록 버튼*/
 .ChoicebtnBlock {
-    padding: 0 0 1rem 0;
-    display: flex;
-    justify-content: center;
+  padding: 0 0 1rem 0;
+  display: flex;
+  justify-content: center;
 }
-.ChoicebtnBlock > button{
-    font-weight: bold;
-    margin: 1rem 0.5rem;
-    width: 10rem;
-    height: 3rem;
-    border-radius: 1.5rem;
-    background: #ffffff;
-    border: 0px;
-    /*border-style: solid;*/
-    /*color:white;*/
-    /*border-color: white;*/
-    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
-
+.ChoicebtnBlock button {
+  font-weight: bold;
+  margin: 1rem 0.5rem;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  border: 0px;
+  /*border-style: solid;*/
+  /*color:white;*/
+  /*border-color: white;*/
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
 }
-.ChoicebtnBlock > button:hover{
-    background: rgb(226, 207, 158);
-    color:white;
-    scale: 110%;
+.ChoicebtnBlock button:hover {
+  background: rgba(255, 255, 255, 0);
+  border: 2px solid;
+  border-color: rgb(255, 255, 255);
+  color: white;
+  scale: 102.5%;
+  transition: all 0.4s; /*0.5초동안 애니메이션 효과*/
 }
 
 /*지도*/
 .mapBlock {
-    padding: 1rem 0;
+  padding: 1rem 0;
 }
 
 /*검색 바*/
 .searchBlock {
-    margin: 2rem 0;
-    background-color: white;
-    border-radius: 30px;
-    width: 100%;
-    height: 3rem;
+  margin: 2rem 0;
+  /*background-color: white;*/
+  border: 2px solid;
+  border-color: white;
+  border-radius: 30px;
+  width: 100%;
+  height: 3rem;
 
-    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
-
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
+}
+.searchBlock ::placeholder {
+  color: white;
 }
 .searchBlock:hover {
-    scale: 105%;
-    /*background-color: rgba(0, 0, 0, 0.11);*/
+  scale: 102.5%;
+  /*background-color: rgba(0, 0, 0, 0.11);*/
+  transition: all 0.4s; /*0.5초동안 애니메이션 효과*/
+}
+.searchBlock input {
+  color: white;
 }
 #searchVal {
-    margin: 0.25rem 0 0.25rem 1.5rem;
-    width: 70%;
-    height: 2.5rem;
-    border:0;
-    background-color: rgba(255, 255, 255, 0);
-    float: left;
+  margin: 0.25rem 0 0.25rem 1.5rem;
+  width: 70%;
+  height: 2.5rem;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0);
+  float: left;
 }
-#searchVal:focus{
-    outline: none;
+#searchVal:focus {
+  outline: none;
 }
 
 #btnSearch {
-    margin: 0.85rem 1rem 1rem 0;
-    width: 1.2rem;
-    float: right;
+  margin: 0.85rem 1rem 1rem 0;
+  width: 1.2rem;
+  float: right;
 }
 
 /*지도 필터*/
 .arrayBlcok {
-    margin: 1rem 0;
-    width: 100%;
-
+  margin: 1rem 0;
+  width: 100%;
 }
-#arrayhsp { /*필터 셀렉터*/
-    height: 2rem;
-    width: 8rem;
-    margin: 0 auto;
-    float: left;
-    text-align: center;
-    border: 0;
-    border-radius: 30px;
-    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
-
+#arrayhsp {
+  /*필터 셀렉터*/
+  height: 2rem;
+  width: 8rem;
+  margin: 0 auto;
+  float: left;
+  text-align: center;
+  border: 0;
+  border-radius: 30px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
 }
-#b1 { /*현재위치 버튼*/
-    height: 2rem;
-    width: 8rem;
-    text-align: center;
-    float: right;
-    border: 0;
-    border-radius: 30px;
+#b1 {
+  /*현재위치 버튼*/
+  height: 2rem;
+  width: 8rem;
+  text-align: center;
+  float: right;
+  border: 0;
+  border-radius: 30px;
 
-    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
+  background-color: white;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
 }
-
 
 /*검색 결과 리스트*/
 .resBlock {
-    margin: 0;
-    padding: 0 0 10rem 0;
+  margin: 0;
+  padding: 0 0 10rem 0;
 }
 
 /*해상도 1100px이상일 경우*/
-@media(min-width:1100px) {
-    #reslist {
-        /*background-color: rgb(212, 146, 146);*/
-        margin: 4rem -5% 3rem 1rem;
-        padding: 2rem 0;
-    }
+@media (min-width: 1100px) {
+  #reslist {
+    /*background-color: rgb(212, 146, 146);*/
+    margin: 4rem -5% 3rem 0;
+    padding: 2rem 0;
+  }
 
-    .resBlock form ul li {
-        width: 43%;
-        height: 7rem;
-        margin: 0 2% 2rem 0;
-        padding: 1rem 1rem;
-        background-color: white;
-        list-style:none;
-        border-radius: 15px;
-        float: left;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    
-        box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
-
-        /*display:table;
-        margin: 1rem auto;*/
-    }
-}
-/*해상도 1100px이하일 경우*/
-@media (max-width:1100px) {
-    #reslist {
-        /*background-color: rgb(212, 146, 146);*/
-        margin: 4rem 0 3rem 0;
-        padding: 2rem 0;
-    }
-    
-    .resBlock form ul li {
-        width: 92.5%;
-        height: 5.5rem;
-        margin: 0 0 2rem 0;
-        padding: 1rem 1rem;
-        background-color: white;
-        list-style:none;
-        border-radius: 15px;
-        align-items: center;
-        justify-content: center;
-
-        box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
-        /*display:table;
-        margin: 1rem auto;*/
-    }
-} 
-
-/*병원 이미지*/
-#img { 
-    float: left;
-    background-color: #93aad4;
-    margin-right: 1rem;
+  .resBlock form ul li {
+    width: 41.5%;
+    height: 8rem;
+    margin: 0 2% 2rem 1rem;
+    padding: 1rem 1rem;
+    background-color: white;
+    list-style: none;
     border-radius: 15px;
-}
-/*해상도 1100px이상일 경우*/
-@media(min-width:1100px) {
-    #img { 
-        width: 7rem;
-        height: 7rem;
-        
-    }
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
+
+    /*display:table;
+      margin: 1rem auto;*/
+  }
 }
 /*해상도 1100px이하일 경우*/
-@media (max-width:1100px) {
-    #img { 
-        width: 6rem;
-        height: 5.5rem;
-    }
-} 
+@media all and (max-width: 1100px) and (min-width: 480px) {
+  #reslist {
+    /*background-color: rgb(212, 146, 146);*/
+    margin: 4rem 0 3rem 0;
+    padding: 2rem 0;
+  }
 
-.inform { 
-    height: 100%;
-    float: left;
+  .resBlock form ul li {
+    width: 92.5%;
+    height: 6.5rem;
+    margin: 0 0 2rem 0;
+    padding: 1rem 1rem;
+    background-color: white;
+    list-style: none;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
+    /*display:table;
+      margin: 1rem auto;*/
+  }
+}
+@media (max-width: 480px) {
+  #reslist {
+    /*background-color: rgb(212, 146, 146);*/
+    margin: 4rem 0 3rem 0;
+    padding: 2rem 0;
+  }
+  .resBlock form ul li {
+    width: 92.5%;
+    height: 6rem;
+    margin: 0 0 1rem -3px;
+    padding: 1rem 1rem;
+    background-color: white;
+    list-style: none;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
+  }
+}
+/*병원 이미지*/
+#img {
+  float: left;
+  background-color: #93aad4;
+  margin-right: 1rem;
+}
+/*해상도 1100px이상일 경우*/
+@media (min-width: 1100px) {
+  #img {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+}
+/*해상도 1100px이하일 480이상일 경우*/
+@media all and (max-width: 1100px) and (min-width: 480px) {
+  #img {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+}
+/*해상도 480px이하일 경우*/
+@media (max-width: 480px) {
+  #img {
+    width: 6rem;
+    height: 6rem;
+    position: absolute;
+    left: 6%;
+  }
+}
+
+.inform {
+  height: 100%;
+  width: 50%;
+  float: left;
+  display: grid;
+  margin-right: -10%;
+}
+@media (min-width: 1100px) {
+  .inform {
+    grid-template-rows: 15% 13% 17% 12.5% 12.5% 12.5%;
+  }
+  #address {
+    width: fit-content;
+  }
+}
+@media all and (max-width: 1100px) and (min-width: 480px) {
+  .inform {
+    grid-template-rows: 15% 17% 15% 14% 14% 14%;
+    width: 60%;
+  }
+  #address {
+    width: fit-content;
+  }
+}
+@media (max-width: 480px) {
+  .inform {
+    grid-template-rows: 17% 15% 12% 13% 13% 13%;
+    position: absolute;
+    height: 6rem;
+    left: 34%;
+  }
+  #address {
+    height: 1rem;
+    width: 100%;
+    overflow: hidden; /*범위 넘어가면 자름*/
+    text-overflow: clip; /*텍스트 넘치면 자름*/
+    white-space: nowrap; /*자동 줄바꿈 방지*/
+  }
 }
 #name {
-    font-weight: bold;
-    font-size: 12px;
+  width: fit-content;
+  font-weight: bold;
+  font-size: 12px;
+  text-overflow: ellipsis;
 }
 #tel {
-
+  width: fit-content;
 }
 #address {
-    padding: 5px 0;
-
+  padding: 5px 0;
+  text-overflow: ellipsis;
 }
-
 .time {
-    margin : 1rem 0;
+  width: fit-content;
+  margin: 1rem 0;
 }
 
 #btnReserve {
-    width: 5rem;
-    height: 1.5rem;
-    border-radius: 30px;
-    border: 0;
-    background-color: #93aad4;
-    color: white;
+  width: 5rem;
+  height: 1.5rem;
+  border-radius: 30px;
+  border: 0;
+  background: #7894be;
+  color: white;
 }
 /*해상도 1100px이상일 경우*/
-@media(min-width:1100px) {
-    #btnReserve {
-        margin-top: 6rem;
-    }
+@media (min-width: 1100px) {
+  #btnReserve {
+    margin-top: 6rem;
+  }
 }
-/*해상도 1100px이하일 경우*/
-@media (max-width:1100px) {
-    #btnReserve {
-        margin-top: 4rem;
-        position: absolute;
-        right:  20%;
-    }
-} 
-#btnReserve:hover {
-    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
-}
-
-.popup {
-    display: none;
-}
-/*팝업 창을 위한 css 부분*/
-/*
-.popup {
-    width: 500px;
-    height: 500px;
-    box-shadow: 2px 2px 10px gray;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    text-align: right;
-    padding : 20px;
-
+/*해상도 1100px이하일 650이상일 경우*/
+@media all and (max-width: 1100px) and (min-width: 650px) {
+  #btnReserve {
+    margin-top: 5rem;
     position: absolute;
-    left: 50%;
-    top:50%;
-    transform: translate(-50%, -50%);
+    right: 20%;
+  }
+}
+/*해상도 650px이하일 경우*/
+@media all and (max-width: 650px) {
+  #btnReserve {
+    margin-top: 4.5rem;
+    position: absolute;
+    right: 6.5%;
+  }
+}
 
-    opacity: 0;
+#btnReserve:hover {
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.112);
+  transition: all 0.4s; /*0.5초동안 애니메이션 효과*/
+}
 
-    transition: all 0.5s; /*0.5초동안 애니메이션 효과*/
-/*
-    z-index: 5;
+/*팝업 창을 위한 css 부분*/
+.popup {
+  width: 400px;
+  height: 400px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
+  border-radius: 30px;
+  padding: 2rem;
+
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+  font-size: 1rem;
+  transition: all 0.5s; /*0.5초동안 애니메이션 효과*/
+  z-index: -5;
+
+  background-image: url("./img/main_bar.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
-.popup a {
-    color:gray;
-    text-decoration: none;
-    font-size: 1rem;
+@media (max-width: 500px) {
+  .popup {
+    width: 75%;
+  }
 }
-.popup:target{   /*popup이 타겟이 될 때 보여지도록*/
-/*    opacity: 1;
+.popup:target {
+  /*popup이 타겟이 될 때 보여지도록, 하이퍼링크로 간 영역*/
+  opacity: 1;
+  z-index: 5;
 }
-.popup:target + .dim {   /*popup이 타겟이 왔고 형제인 div(dim)를 선택했을때*/
- /*   opacity: 1;
-    z-index: 1;
+.popup:target + .dim {
+  /*popup이 타겟이 왔고 형제인 div(dim)를 선택했을때*/
+  opacity: 1;
+  z-index: 2;
 }
 .dim {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom : 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6); /*팝업 뒤가 클릭되지 않도록 까맣게 배경을 칠함*/
- /*   opacity: 0; /*투명도가 0일 뿐 그 뒤의 요소가 클릭되지 않음*/
- /*   z-index: -1; /*클릭되도록 위치를 옮김*/
-/*}
-/*여기까지**/
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
 
+  background: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /*팝업 뒤가 클릭되지 않도록 까맣게 배경을 칠함*/
+  opacity: 0;
+  z-index: -1; /*클릭되도록 위치를 옮김*/
+}
+.popup span {
+  /*Title*/
+  float: left;
+  margin: 1rem 0 2rem 0;
+  padding-left: 0.5rem;
+  border-left: 2px solid;
 
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+#popupform {
+  width: 90%;
+  height: 90%;
+}
+
+/*예약 정보 블럭*/
+#reserveTable {
+  width: 110%;
+}
+#reserveTable tr td {
+  margin-bottom: 0.5rem;
+  /*border-bottom: 1px solid;
+  /*border-color: rgba(0, 0, 0, 0.505);*/
+}
+#reserveTable tr td input {
+  border-bottom: 1px solid;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.463);
+  border: 0;
+
+  font-weight: bold;
+}
+.popupTableKey {
+  width: 30%;
+  text-align: left;
+  font-size: 85%;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+.popupTableValue {
+  float: right;
+  text-align: left;
+  width: 100%;
+}
+#health {
+  /*증상 입력 창*/
+  float: right;
+  text-align: left;
+  font-weight: bold;
+  resize: none;
+  margin: 0.5rem -4px 0.5rem 0;
+  background: rgba(255, 255, 255, 0.463);
+  border: 0;
+  /*border-bottom: 1px solid;*/
+}
+#reserveDate {
+  margin: 1rem -5px 1rem 0;
+  border: 1px solid;
+  text-align: left;
+}
+/*.reserveTime { /*희망 시간 버튼*/
+/*height: fit-content;
+}
+.reserveTime input[type="checkbox"] {
+  display: none;
+}
+.reserveTime input[type="checkbox"]+label {
+  width: 5rem;
+  height: 3rem;
+  margin: 0.5rem 0.25rem;
+  padding: 0rem 0.2em;
+  border-radius: 30px;
+  background-color: white;
+  /*border-color: #6A85B6;*/
+/*border: 1px solid #ffffff; }*/
+
+#btnSub {
+  width: 6rem;
+  height: 1.5rem;
+  margin: 1.5rem 0.5rem;
+
+  border-radius: 30px;
+  border: 0;
+  background-color: rgb(66, 66, 66);
+  color: rgb(255, 255, 255);
+  float: right;
+}
+#btnClose {
+  /*닫기 버튼*/
+  width: 6rem;
+  height: 1.5rem;
+  margin: 1.5rem -2rem 1.5rem 0rem;
+
+  border-radius: 30px;
+  border: 1px solid;
+  border-color: rgb(66, 66, 66);
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+
+  float: right;
+  text-decoration: none;
+}
+/**=============================*/
 
 /*footer*/
 footer {
-    width: 100%;
-    height: 15rem;
-    background-color: rgba(0, 0, 0, 0.075);
+  width: 100%;
+  height: 15rem;
+  background-color: rgba(0, 0, 0, 0.075);
 }
 /*해상도 1100px이상일 경우*/
-@media(min-width: 1100px) {
-    footer {
-        margin-top: 100%;
-    }
+@media (min-width: 1101px) {
+  footer {
+    margin-top: 90%;
+  }
 }
 /*해상도 1100px이하일 경우*/
 @media (max-width: 1100px) {
-    footer {
-        margin-top: -10rem;
-    }
-} 
+  footer {
+    margin-top: 0;
+  }
+}
