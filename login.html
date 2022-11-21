@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>로그인정보</title>
+    <link href="login.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="title_main">
+            <!--<div id="title_bg">-->
+            <div class="title_bar">
+                <!--onClick 추가-->
+                <span><input id="logo" name="logo" type="button" value="어의" onClick="location.href='/'" /></span>
+                <!-- 수정 -->
+                <span><input id="login" name="login" type="button" value="login"
+                        onClick="location.href='login'" /></span>
+                </form>
+                <br /><br />
+            </div>
+            <div id="title_txt01">재택치료를 위한</div>
+            <div id="title_txt02">어의 ID 로그인 </div>
+            <!--</div>-->
+        </div>
+    </header>
+    <!-- 중간부 -->
+    <main>
+        <section class="login-Section">
+            <div class="login-form">
+
+                <form name="login-bar">
+                    <div class=log>
+                        <input class="Login" id="ID" type="text" required="required" placeholder="   아이디"
+                            autocomplete="off" />
+                        <br /><br />
+                        <input class="Login" id="PASSWORD" type="password" required="required" placeholder="   비밀번호"
+                            autocomplete="off" />
+                    </div>
+                    <br />
+                    <div class="auto">
+                        <input type="checkbox" name="Login-Auto" />
+                        <label for="Login-Auto">자동로그인</label>
+                    </div>
+
+                    <div>
+                        <input type="submit" id="login-button" class="login-finish" value=" 로그인 하기">
+                    </div>
+
+
+                    <div class="login-find">
+                        <a href id="f-id">아이디 찾기</a>
+                        <a href id="f-pw">비밀번호 찾기</a>
+                    </div>
+
+                    <div class="sign-up">
+                        어의 회원이 아니신가요?
+
+                        <a href id="sign">회원가입하기</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- 하단부 / 메인페이지에 들어가는 하단부 복붙하면 될듯 -->
+    <footer>
+        <section class="login-fotter">
+
+            <div class="under">
+                <nav class="fotter-menu">
+                    <a href id="sign">고객센터</a>
+                    <a href id="sign">이용약관</a>
+                    <a href id="sign">개인정보처리방침</a>
+                    <a href id="sign">법적고지</a>
+                </nav>
+            </div>
+        </section>
+    </footer>
+</body>
+
+</html>
