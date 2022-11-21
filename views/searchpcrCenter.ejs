@@ -26,8 +26,9 @@
                     <form>
                         <!--onClick 추가-->
                         <span><input id="logo" name="logo" type="button" value="사이트 로고"
-                                onClick="location.href='mainPG'" /></span>
-                        <span><input id="login" name="login" type="button" value="login" /></span>
+                                onClick="location.href='/'" /></span>
+                        <span><input id="login" name="login" type="button" value="login"
+                                onClick="location.href='login'" /></span>
                     </form>
                     <br><br>
                 </div>
@@ -44,7 +45,7 @@
             <div class="ChoicebtnBlock">
                 <!--11-08 서영 : button id 변경-->
                 <button type="button" id="hospital" onclick="location.href='searchhospital'">병원</button>
-                <button type="button" id="pharmacy" onclick="location.href='searchpharmacy'">약국</button>
+                <button type="button" id="pharmacy" onclick="location.href='searchpharmacy'">약국 / 편의점</button>
                 <button type="button" id="pcrCenter" onclick="location.href='searchpcrCenter'">선별진료소</button>
                 <button type="button" id="isolation" onclick="location.href='searchisolation'">격리시설</button>
             </div>
@@ -60,7 +61,7 @@
 
             <!--검색 바 위치 변경 : 지도 위 -> 지도 밑으로 -->
             <div class="searchBlock">
-                <form>
+                <form action="" method="get">
                     <input id="searchVal" name="search" type="text" placeholder="이름을 입력해주세요 ">
 
                     <!--이미지 소스 삽입  + 앵커 삽입-->
@@ -74,10 +75,10 @@
             <div class="arrayBlcok">
                 <select name="arrayhsp" id="arrayhsp">
                     <span>
-                        <option value="distance">가까운 순</option>
+                        <option value="ganada">가나다순</option>
                     </span>
                     <span>
-                        <option value="related">관련도 순</option>
+                        <option value="distance" selected>가까운순</option>
                     </span>
                 </select>
                 <form>
@@ -94,9 +95,14 @@
                         gyd = gyeongdo;
 
                         var location = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
-
-                        map.setCenter(location);
-                        map.setZoom(17);
+                        var map = new naver.maps.Map('map', { // 지도 띄우기
+                            center: new naver.maps.LatLng(wid, gyd),
+                            zoom: 17,
+                            zoomControl: true, //줌 컨트롤의 표시 여부
+                            zoomControlOptions: { //줌 컨트롤의 옵션
+                                position: naver.maps.Position.TOP_RIGHT
+                            }
+                        });
 
                         var contentString = [
                             '<div class="iw_inner">',
@@ -131,7 +137,8 @@
                 <form>
                     <ul id="reslist">
                         <% for(var i=0; i<model.length; i++){ %>
-                            <li id=<%=model[i].id %> onclick='savewg("<%= model[i].선별진료소명%>",<%= model[i].위도 %>,<%=model[i].경도 %>)'>
+                            <li id=<%=model[i].id %> onclick='savewg("<%= model[i].선별진료소명%>",<%= model[i].위도 %>,<%=
+                                            model[i].경도 %>)'>
                                             <div>
                                                 <img id="img" name="사진" alt="사진" src="">
                                             </div>
@@ -141,35 +148,23 @@
                                                 </span>
                                                 <span id="tel"> |
                                                     <%= model[i].전화번호 %>
-                                                </span><br>
+                                                </span>
                                                 <span id="address">
                                                     <%= model[i].주소 %>
-                                                </span><br>
-                                                <br>
+                                                </span>
 
                                                 <span class="time">평일
                                                     <%= model[i].평일운영시간 %>
-                                                </span><br>
+                                                </span>
                                                 <span class="time">토요일
                                                     <%= model[i].토요일운영시간 %>
-                                                </span><br>
+                                                </span>
                                                 <span class="time">일요일
                                                     <%= model[i].일요일운영시간 %>
                                                 </span>
                                             </div>
 
-                                            <!--예약 버튼 클릭 시 예약 팝업창 뜨도록-->
-                                            <a href="#pop1" class="btn"><input type="button" id="btnReserve"
-                                                    value="예약 하기"></a>
 
-                                            <!--가려질 부분 / opacity : 0-->
-                                            <div class="popup" id="pop1">
-                                                <a href="#a">닫기</a>
-                                            </div>
-                                            <div class="dim">
-
-                                            </div>
-                                            <!--여기까지-->
                             </li>
                             <% } %>
                                 <!--<span><input name="add" type="button" value="더보기"></span>-->
