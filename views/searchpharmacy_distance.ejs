@@ -15,7 +15,7 @@
     <link href="search.css" type="text/css" rel="stylesheet">
     <!--페이지 타이틀 아이콘 삽입-->
     <link rel="shortcut icon" type="image/x-icon" href="./img/logo.png">
-    <title> 방구석 힐러 - 검색</title>
+    <title>어의 | 약국 검색</title>
 </head>
 
 <body>
@@ -26,8 +26,8 @@
                 <div class="title_bar">
                     <form>
                         <!--onClick 추가-->
-                        <span><input id="logo" name="logo" type="button" value="사이트 로고"
-                                onClick="location.href='mainPG.html'" /></span>
+                        <span><input id="logo" name="logo" type="button" value="HOME"
+                                onClick="location.href='/'" /></span>
                         <span><input id="login" name="login" type="button" value="My Page" /></span>
                     </form>
                     <br><br>
@@ -217,7 +217,7 @@
                             <li id=<%=model[i].id %> onclick='savewg("<%= model[i].업체명%>",<%= model[i].위도 %>,<%=
                                             model[i].경도 %>)'>
                                             <div>
-                                                <img id="img" name="사진" alt="사진" src="">
+                                                <img id="img" name="사진" alt="사진" src="./img/pharmacy.jpg">
                                             </div>
                                             <div class="inform">
                                                 <span id="name">
@@ -243,51 +243,71 @@
 
                                             <!--예약 버튼 클릭 시 예약 팝업창 뜨도록-->
                                             <a href="#pop1" class="btn"><input type="button" id="btnReserve"
-                                                    value="예약 하기"></a>
+                                                    value="배달 예약"></a>
 
                                             <!--가려질 부분 / opacity : 0-->
                                             <div class="popup" id="pop1">
-                                                <a href="#a">닫기</a>
+                                                <span>예약 정보를 입력해주세요✍🏻</span>
                                                 <div id="popupform">
                                                     <form>
-                                                        <table>
-                                                            <tr>
-                                                                <td>이름 :</td>
-                                                                <td><input type="text"></td>
+                                                        <table id="reserveTable">
+                                                            <tr class="reserveMyData">
+                                                                <td class="popupTableKey">이름</td>
+                                                                <td class="popupTableValue"><input type="text"></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>나이 :</td>
-                                                                <td><input type="text" placeholder="만 나이를 입력해주세요"></td>
+                                                            <tr class="reserveMyData">
+                                                                <td class="popupTableKey">연락처</td>
+                                                                <td class="popupTableValue"><input type="tel"
+                                                                        placeholder="">
+                                                                </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>증상 :</td>
-                                                                <td><textarea cols="23" rows="10"></textarea></td>
+                                                            <tr class="reserveMyData">
+                                                                <td class="popupTableKey">주소</td>
+                                                                <td class="popupTableValue">
+                                                                    <input type="text" placeholder="">
+                                                                </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>필요한 약 :</td>
-                                                                <td><input type="text"></td>
+                                                            <tr class="reserveHealth">
+                                                                <td class="popupTableKey">증상</td>
+                                                                <td><textarea class="popupTableValue" id="health"
+                                                                        rows="4" placeholder=""></textarea></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>먹고 있는 약 :</td>
-                                                                <td><input type="text">
-                                                            <tr>
-                                                                <td>배달 원하는 시간 :</td>
-                                                                <td><textarea cols="23" rows="4"
-                                                                        placeholder="가능한 시간대를 모두 작성해주세요"></textarea>
+                                                            <tr class="reserveDate">
+                                                                <!--날짜 입력 폼-->
+                                                                <td class="popupTableKey">희망 날짜</td
+                                                                    class="popupTableValue">
+                                                                <td><input type="date" class="popupTableValue"
+                                                                        id="reserveDate"></td>
+                                                                <script>
+                                                                    document.getElementById('reserveDate').value = new Date().toISOString().substring(0, 10);
+                                                                </script>
+                                                                <!--현재 날짜를 기본값으로-->
+                                                            </tr>
+                                                            <tr class="reserveDate">
+                                                                <!--진료 희망시간 선택 - 라디오버튼-->
+                                                                <td class="popupTableKey">희망 시간대</td>
+                                                                <td><input type="text" placeholder="30분 단위로 작성해주세요 :)">
                                                                 </td>
                                                             </tr>
                                                         </table>
-                                                        <input id="btnSub" type="submit" value="제출"
-                                                            onclick="alert('제출이 완료되었습니다');location.href='#a'">
+                                                        <a href="#a"><input id="btnClose" type="button" value="취소"></a>
+                                                        <input id="btnSub" type="submit" value="예약하기"
+                                                            onclick="btnSub_OnClick()" onClick="location.href='#a'"></a>
+                                                        <script>
+                                                            function btnSub_OnClick() {
+                                                                alert("예약이 접수되었습니다.");
+                                                                window.location.href = "#a";
+                                                            }
+                                                        </script>
                                                     </form>
                                                 </div>
                                             </div>
                                             <div class="dim">
-
                                             </div>
                                             <!--여기까지-->
                             </li>
                             <% } %>
+                                <p style=clear:both;></p>
                                 <!--<span><input name="add" type="button" value="더보기"></span>-->
                 </form>
             </div>
@@ -296,13 +316,40 @@
 
     <footer>
         <!--사이트 정보-->
-        <div id="bottomContents">
-            <span>이미지1</span>
-            <span>이미지2</span>
-            <span>이미지3</span>
-            사이트 정보 입력 예정
+        <div class="footer_info">
+            <div id="footer-left">
+                <div class="footer_title">Project</div>
+                <div><img id="logomean" src="./img/logo+mean.png"></div>
+                <div>2022-2 Capstone Design</div>
+                <div>Project EOUI</div>
+            </div>
+            <div id="footer-center">
+                <div class="footer_title">Program</div>
+                <div>Tool | Visual Studio Code</div>
+                <div>Front-end | HTML, CSS, JavaScript</div>
+                <div>Back-end | Nodejs, SQLite3, jQuery, Express</div>
+                <div>UI,UX | Photoshop, Illustrator, Figma</div>
+                <div>API | Naver Map</div>
+            </div>
+            <div id="footer-right">
+                <div class="footer_title">Team </div>
+                <div>
+                    <span><img src="./img/t_go.png"></span>
+                    <span>고은영 Back-end</span>
+                </div>
+                <div>
+                    <span><img src="./img/t_kim.png"></span>
+                    <span>김유진 Back-end</span>
+                </div>
+                <div>
+                    <span><img src="./img/t_nam.png"></span>
+                    <span>남서영 Front-end</span>
+                </div>
+            </div>
         </div>
-    </footer>
+        <div id="footer-bottom">
+            @2022-2 Capstone Design Made by Team Homehealer
+        </div>
     </footer>
 </body>
 
