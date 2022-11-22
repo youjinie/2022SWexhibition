@@ -30,8 +30,8 @@ $(document).ready(async function () {
     // 현재 위치 버튼 누를시
     map.setCenter(loc); // 얻은 좌표를 지도의 중심으로 설정합니다.
     map.setZoom(17);
-    //mePosW = XY.lat;
-    //mePosG = XY.lng;
+    mePosW = XY.lat;
+    mePosG = XY.lng;
   };
   //mePosW = XY.lat;
   //mePosG = XY.lng;
