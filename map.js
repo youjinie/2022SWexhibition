@@ -33,8 +33,8 @@ $(document).ready(async function () {
     mePosW = XY.lat;
     mePosG = XY.lng;
   };
-  //mePosW = XY.lat;
-  //mePosG = XY.lng;
+  mePosW = XY.lat;
+  mePosG = XY.lng;
 });
 
 async function getLocation() {
