@@ -3,7 +3,7 @@
 body {
   font-size: 10px;
   width: 100%;
-  background: linear-gradient(#7894be, whitesmoke);
+  background: linear-gradient(#6f9dbe, #6fbbbe);
 
   margin: 0;
   padding: 0;
@@ -172,9 +172,9 @@ body {
 /*검색 결과 리스트*/
 .resBlock {
   margin: 0;
-  padding: 0 0 10rem 0;
+  padding: 0 0 2.5rem 0;
+  height: fit-content;
 }
-
 /*해상도 1100px이상일 경우*/
 @media (min-width: 1100px) {
   #reslist {
@@ -192,14 +192,8 @@ body {
     list-style: none;
     border-radius: 15px;
     float: left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
-
-    /*display:table;
-      margin: 1rem auto;*/
   }
 }
 /*해상도 1100px이하일 경우*/
@@ -249,7 +243,7 @@ body {
 /*병원 이미지*/
 #img {
   float: left;
-  background-color: #93aad4;
+  background: linear-gradient(#6f9dbed6, #6fbbbed6);
   margin-right: 1rem;
 }
 /*해상도 1100px이상일 경우*/
@@ -338,13 +332,21 @@ body {
   height: 1.5rem;
   border-radius: 30px;
   border: 0;
-  background: #7894be;
+  background: linear-gradient(90deg, #6f9dbed6, #6fbbbed6);
   color: white;
 }
 /*해상도 1100px이상일 경우*/
 @media (min-width: 1100px) {
   #btnReserve {
-    margin-top: 6rem;
+    margin-top: 6.25rem;
+    float: right;
+  }
+}
+/*해상도 1200px이하일 1100이상일 경우*/
+@media all and (max-width: 1200px) and (min-width: 1100px) {
+  #btnReserve {
+    margin-right: 0rem;
+    position: absolute;
   }
 }
 /*해상도 1100px이하일 650이상일 경우*/
@@ -373,9 +375,9 @@ body {
 .popup {
   width: 400px;
   height: 400px;
-  background-color: rgb(255, 255, 255);
+  background: white;
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
-  border-radius: 30px;
+  border-radius: 15px;
   padding: 2rem;
 
   position: fixed;
@@ -388,7 +390,7 @@ body {
   transition: all 0.5s; /*0.5초동안 애니메이션 효과*/
   z-index: -5;
 
-  background-image: url("./img/main_bar.png");
+  background-image: url("./img/reservePG.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -430,12 +432,13 @@ body {
 .popup span {
   /*Title*/
   float: left;
-  margin: 1rem 0 2rem 0;
+  margin: 1rem 0 1rem 0;
   padding-left: 0.5rem;
-  border-left: 2px solid;
+  border-left: 2px solid rgba(255, 255, 255, 0.638);
 
-  color: rgb(0, 0, 0);
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
 }
 
 #popupform {
@@ -446,25 +449,26 @@ body {
 /*예약 정보 블럭*/
 #reserveTable {
   width: 110%;
+  background: rgba(255, 255, 255, 0.437);
 }
-#reserveTable tr td {
-  margin-bottom: 0.5rem;
-  /*border-bottom: 1px solid;
-  /*border-color: rgba(0, 0, 0, 0.505);*/
+#reserveTable tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#reserveTable tr:nth-child(odd) {
+  background-color: rgba(245, 245, 245, 0.5);
 }
 #reserveTable tr td input {
-  border-bottom: 1px solid;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.463);
+  width: 97%;
+  height: 1.5rem;
+  padding-left: 0.5rem;
+  background: rgba(255, 255, 255, 0);
   border: 0;
-
-  font-weight: bold;
 }
 .popupTableKey {
-  width: 30%;
-  text-align: left;
+  width: 25%;
+  text-align: center;
   font-size: 85%;
-  font-weight: bold;
+  font-weight: 400;
   color: rgb(0, 0, 0);
 }
 .popupTableValue {
@@ -472,46 +476,54 @@ body {
   text-align: left;
   width: 100%;
 }
+#reserveAd textarea {
+  width: 97%;
+  height: 2rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+
+  resize: none;
+  background: rgba(255, 255, 255, 0);
+  border: 0;
+}
 #health {
   /*증상 입력 창*/
-  float: right;
+  width: 97%;
+  height: 5rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+
   text-align: left;
-  font-weight: bold;
+
   resize: none;
-  margin: 0.5rem -4px 0.5rem 0;
-  background: rgba(255, 255, 255, 0.463);
+  background: rgba(255, 255, 255, 0);
   border: 0;
   /*border-bottom: 1px solid;*/
 }
 #reserveDate {
-  margin: 1rem -5px 1rem 0;
+  /* margin: 1rem -5px 1rem 0;*/
   border: 1px solid;
-  text-align: left;
+  text-align: center;
 }
-/*.reserveTime { /*희망 시간 버튼*/
-/*height: fit-content;
-}
-.reserveTime input[type="checkbox"] {
-  display: none;
-}
-.reserveTime input[type="checkbox"]+label {
-  width: 5rem;
+#reserveTime {
   height: 3rem;
-  margin: 0.5rem 0.25rem;
-  padding: 0rem 0.2em;
-  border-radius: 30px;
-  background-color: white;
-  /*border-color: #6A85B6;*/
-/*border: 1px solid #ffffff; }*/
-
+}
+#reserveTime textarea {
+  width: 97%;
+  height: 2.5rem;
+  resize: none;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  background: rgba(255, 255, 255, 0);
+  border: 0;
+}
 #btnSub {
   width: 6rem;
   height: 1.5rem;
-  margin: 1.5rem 0.5rem;
+  margin: 1rem 0.5rem;
 
-  border-radius: 30px;
+  border-radius: 15px;
   border: 0;
-  background-color: rgb(66, 66, 66);
+  background-color: #6f9dbe;
+  box-shadow: 2px 2px 7px rgba(255, 255, 255, 0.3);
+
   color: rgb(255, 255, 255);
   float: right;
 }
@@ -519,13 +531,15 @@ body {
   /*닫기 버튼*/
   width: 6rem;
   height: 1.5rem;
-  margin: 1.5rem -2rem 1.5rem 0rem;
+  margin: 1rem -2rem 1rem 0rem;
 
-  border-radius: 30px;
-  border: 1px solid;
-  border-color: rgb(66, 66, 66);
+  border-radius: 15px;
+  border: 0;
   background-color: #ffffff;
-  color: rgb(0, 0, 0);
+  box-shadow: 2px 2px 7px rgba(255, 255, 255, 0.3);
+
+  color: #3e586a;
+  font-weight: 400;
 
   float: right;
   text-decoration: none;
@@ -534,19 +548,92 @@ body {
 
 /*footer*/
 footer {
-  width: 100%;
-  height: 15rem;
+  width: 80%;
+  padding: 1rem 10%;
   background-color: rgba(0, 0, 0, 0.075);
+  margin-top: 10%;
+  height: 18rem;
 }
-/*해상도 1100px이상일 경우*/
-@media (min-width: 1101px) {
+/*해상도 760px이상일 경우*/
+/*@media(min-width: 760px) {
   footer {
-    margin-top: 90%;
+      margin-top: 0%;
+      height: 20rem;
   }
 }
-/*해상도 1100px이하일 경우*/
-@media (max-width: 1100px) {
+/*해상도 760px이하일 경우*/
+/*@media (max-width: 760px) {
   footer {
-    margin-top: 0;
+      margin-top: 0;
+      height: 18rem;
   }
+} */
+
+/*footer*/
+footer {
+  width: 80%;
+  padding: 1rem 10%;
+  background-color: rgba(0, 0, 0, 0.075);
+  margin-top: 10%;
+  height: 18rem;
+}
+/*해상도 760px이상일 경우*/
+/*@media(min-width: 760px) {
+  footer {
+      margin-top: 0%;
+      height: 20rem;
+  }
+}
+/*해상도 760px이하일 경우*/
+/*@media (max-width: 760px) {
+  footer {
+      margin-top: 0;
+      height: 18rem;
+  }
+} */
+
+/*footer 내용*/
+.footer_info div {
+  padding-left: 0rem;
+}
+.footer_info div div {
+  margin-bottom: 0.25rem;
+}
+
+.footer_title {
+  padding-top: 10%;
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#footer-left {
+  width: 25%;
+  float: left;
+}
+#logomean {
+  width: 80%;
+}
+
+#footer-center {
+  margin-left: 5%;
+  width: 35%;
+  float: left;
+}
+
+#footer-right {
+  width: 30%;
+  height: 80%;
+  float: right;
+}
+#footer-right div img {
+  height: 3.5rem;
+}
+
+#footer-bottom {
+  width: 100%;
+
+  padding-top: 15rem;
+  padding-bottom: 1rem;
+  text-align: left;
 }
