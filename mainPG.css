@@ -15,18 +15,20 @@ body {
 
   width: 100%;
   height: 25rem;
-  background: linear-gradient(#7894be, whitesmoke);
+
+  background: linear-gradient(#6f9dbe, #6fbbbe);
+  /*background: linear-gradient(#7894be, whitesmoke);*/
 
   /*background-image: url("./img/main_bar.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;*/
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;*/
 } /*
 #main_bar_mockup {
-    height: 20rem;
-    float: right;
-    margin: -10rem -5rem 0 -5rem;
-    z-index: -5rem;
+  height: 20rem;
+  float: right;
+  margin: -10rem -5rem 0 -5rem;
+  z-index: -5rem;
 }*/
 .title_bar {
   height: fit-content;
@@ -34,8 +36,8 @@ body {
   color: white;
 
   /*border-bottom: 1px solid;
-    border-color: rgba(255, 255, 255, 0.547);
-    background-color: rgba(255, 255, 255, 0.196);*/
+  border-color: rgba(255, 255, 255, 0.547);
+  background-color: rgba(255, 255, 255, 0.196);*/
 }
 
 #logo {
@@ -66,8 +68,8 @@ body {
   padding-left: 10%;
   font-size: 1rem;
   color: white;
-  text-shadow: 2px 2px 4px rgba(41, 63, 95, 0.426);
-
+  /*text-shadow: 2px 2px 4px rgba(41, 63, 95, 0.426);
+*/
   line-height: 1;
   animation-name: grow;
   animation-duration: 1s; /* 애니메이션 시간 */
@@ -87,8 +89,8 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
-  text-shadow: 2px 2px 4px rgba(41, 63, 95, 0.426);
-
+  /* text-shadow: 2px 2px 4px rgba(41, 63, 95, 0.426);
+*/
   line-height: 1;
   animation-name: grow;
   animation-duration: 1s; /* 애니메이션 시간 */
@@ -230,8 +232,9 @@ body {
 
 /*footer*/
 footer {
-  width: 100%;
-  height: 15rem;
+  width: 80%;
+  height: 18rem;
+  padding: 1rem 10%;
   background-color: rgba(0, 0, 0, 0.075);
 }
 /*해상도 760px이상일 경우*/
@@ -245,4 +248,50 @@ footer {
   footer {
     margin-top: 10rem;
   }
+}
+
+/*footer 내용*/
+.footer_info div {
+  padding-left: 0rem;
+}
+.footer_info div div {
+  margin-bottom: 0.25rem;
+}
+
+.footer_title {
+  padding-top: 10%;
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#footer-left {
+  width: 25%;
+  float: left;
+}
+#logomean {
+  width: 80%;
+}
+
+#footer-center {
+  margin-left: 5%;
+  width: 35%;
+  float: left;
+}
+
+#footer-right {
+  width: 30%;
+  height: 80%;
+  float: right;
+}
+#footer-right div img {
+  height: 3.5rem;
+}
+
+#footer-bottom {
+  width: 100%;
+
+  padding-top: 15rem;
+  padding-bottom: 1rem;
+  text-align: left;
 }
