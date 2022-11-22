@@ -1,7 +1,16 @@
+#login {
+  font-size: 0.8rem;
+  color: white;
+  background: none;
+  border: 0;
+  margin: 1rem 2rem;
+  float: right;
+}
+
 body {
   font-size: 10px;
   width: 100%;
-  background: linear-gradient(90deg, #6a85b6 0%, #bac8e0 100%);
+  background: linear-gradient(270deg, #6fbbbe, #6f9dbe);
 
   margin: 0;
   padding: 0;
@@ -24,30 +33,22 @@ body {
   margin: 1rem;
   float: left;
 }
-#login {
-  font-size: 0.8rem;
-  color: white;
-  background: none;
-  border: 0;
-  margin: 1rem 2rem;
-  float: right;
-}
 
 #title_txt01 {
   width: 100%;
   margin: 7rem 0 0 0;
   text-align: center;
-  font-size: 1rem;
-  color: white;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 #title_txt02 {
   width: 100%;
-  margin: 0 0 0 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
+  margin: 0.2rem 0 0 0;
   text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 /* 아이디~회원가입하기 전체 section */
 .login-Section {
@@ -75,12 +76,14 @@ body {
 
 /* 아이디 비밀번호 input */
 .Login {
-  width: 100%;
+  width: 96%;
   height: 50px;
+  padding-left: 1rem;
   font-size: 1rem;
-  background-color: #bac8e0;
+  background-color: #bac8e082;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.085);
 
+  border-radius: 5px;
   border: 0;
 }
 /* 자동로그인및 체크박스  -> 화면크기 바꿀시 자리가 변경됨 수정 필요*/
@@ -94,11 +97,17 @@ body {
 #login-button {
   width: 100%;
   height: 60px;
-  background-color: #3b5075;
+  background: linear-gradient(270deg, #52898b, #50738cc9);
+
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
   margin-bottom: 15px;
+
+  border-radius: 5px;
   border: 0;
   color: white;
+}
+#login-button:hover {
+  background: linear-gradient(270deg, #6fbbbe, #6f9dbe);
 }
 /* 아이디찾기 비밀번호 찾기 */
 .login-find {
@@ -118,7 +127,7 @@ body {
 /* 어의 회원이 아니신가요? */
 .sign-up {
   margin-right: 9px;
-  color: #bac8e0;
+  color: #ffffff7b;
   font-style: italic;
   text-align: center;
 }
@@ -132,7 +141,7 @@ body {
   height: 3rem;
   background-color: rgba(0, 0, 0, 0.075);
 
-  margin-top: 8rem;
+  margin-top: 10rem;
   padding: 1.5rem 0 0 0;
   text-align: center;
   position: relative;
