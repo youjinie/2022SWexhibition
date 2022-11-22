@@ -15,7 +15,7 @@
     <link href="search.css" type="text/css" rel="stylesheet">
     <!--페이지 타이틀 아이콘 삽입-->
     <link rel="shortcut icon" type="image/x-icon" href="./img/logo.png">
-    <title> 방구석 힐러 - 검색</title>
+    <title>어의 | 격리시설 검색</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                 <div class="title_bar">
                     <form>
                         <!--onClick 추가-->
-                        <span><input id="logo" name="logo" type="button" value="사이트 로고"
+                        <span><input id="logo" name="logo" type="button" value="HOME"
                                 onClick="location.href='/'" /></span>
                         <span><input id="login" name="login" type="button" value="My Page"
                                 onClick="location.href='login'" /></span>
@@ -136,7 +136,7 @@
 
                         <li onclick='savewg("코로나 생활치료센터",37.8873,127.7414)'>
                             <div>
-                                <img id="img" name="사진" alt="사진" src="">
+                                <img id="img" name="사진" alt="사진" src="./img/isolation.jpg">
                             </div>
                             <div class="inform">
                                 <span id="name">코로나 생활치료센터
@@ -172,16 +172,42 @@
             </div>
         </section>
     </main>
-
     <footer>
         <!--사이트 정보-->
-        <div id="bottomContents">
-            <span>이미지1</span>
-            <span>이미지2</span>
-            <span>이미지3</span>
-            사이트 정보 입력 예정
+        <div class="footer_info">
+            <div id="footer-left">
+                <div class="footer_title">Project</div>
+                <div><img id="logomean" src="./img/logo+mean.png"></div>
+                <div>2022-2 Capstone Design</div>
+                <div>Project EOUI</div>
+            </div>
+            <div id="footer-center">
+                <div class="footer_title">Program</div>
+                <div>Tool | Visual Studio Code</div>
+                <div>Front-end | HTML, CSS, JavaScript</div>
+                <div>Back-end | Nodejs, SQLite3, jQuery, Express</div>
+                <div>UI,UX | Photoshop, Illustrator, Figma</div>
+                <div>API | Naver Map</div>
+            </div>
+            <div id="footer-right">
+                <div class="footer_title">Team </div>
+                <div>
+                    <span><img src="./img/t_go.png"></span>
+                    <span>고은영 Back-end</span>
+                </div>
+                <div>
+                    <span><img src="./img/t_kim.png"></span>
+                    <span>김유진 Back-end</span>
+                </div>
+                <div>
+                    <span><img src="./img/t_nam.png"></span>
+                    <span>남서영 Front-end</span>
+                </div>
+            </div>
         </div>
-    </footer>
+        <div id="footer-bottom">
+            @2022-2 Capstone Design Made by Team Homehealer
+        </div>
     </footer>
 </body>
 
