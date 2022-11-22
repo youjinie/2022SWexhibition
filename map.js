@@ -20,7 +20,7 @@ $(document).ready(async function () {
     map: map,
     icon: {
       //마커 이미지 변경
-      url: HOME_PATH + "./icon.png",
+      url: HOME_PATH + "./img/icon.png",
       scaledSize: new naver.maps.Size(40, 40),
       origin: new naver.maps.Point(0, 0),
     },
