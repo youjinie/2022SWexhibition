@@ -17,27 +17,12 @@ body {
   height: 25rem;
 
   background: linear-gradient(#6f9dbe, #6fbbbe);
-  /*background: linear-gradient(#7894be, whitesmoke);*/
+}
 
-  /*background-image: url("./img/main_bar.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;*/
-} /*
-#main_bar_mockup {
-  height: 20rem;
-  float: right;
-  margin: -10rem -5rem 0 -5rem;
-  z-index: -5rem;
-}*/
 .title_bar {
   height: fit-content;
   padding-bottom: 1rem;
   color: white;
-
-  /*border-bottom: 1px solid;
-  border-color: rgba(255, 255, 255, 0.547);
-  background-color: rgba(255, 255, 255, 0.196);*/
 }
 
 #logo {
@@ -68,8 +53,6 @@ body {
   padding-left: 10%;
   font-size: 1rem;
   color: white;
-  /*text-shadow: 2px 2px 4px rgba(41, 63, 95, 0.426);
-*/
   line-height: 1;
   animation-name: grow;
   animation-duration: 1s; /* 애니메이션 시간 */
@@ -89,8 +72,6 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
-  /* text-shadow: 2px 2px 4px rgba(41, 63, 95, 0.426);
-*/
   line-height: 1;
   animation-name: grow;
   animation-duration: 1s; /* 애니메이션 시간 */
@@ -127,9 +108,6 @@ body {
   border-radius: 1.5rem;
   background: white;
   border: 0px;
-  /*border-style: solid;*/
-  /*color:white;*/
-  /*border-color: white;*/
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
 }
 .ChoicebtnBlock > button:hover {
@@ -161,8 +139,6 @@ body {
 .noticeBlock {
   width: 100%;
   height: fit-content;
-  /*display:flex;*/
-  /*align-items: center;*/
 }
 .noticeBlock div {
   font-size: 1rem;
@@ -284,8 +260,24 @@ footer {
   height: 80%;
   float: right;
 }
+#footer-right div {
+  display: table;
+}
+#footer-right div span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 #footer-right div img {
-  height: 3.5rem;
+  width: 3.5rem;
+  height: auto;
+  margin-right: 1rem;
+}
+@media (max-width: 480px) {
+  #footer-right div img {
+    width: 2.5rem;
+    height: auto;
+  }
 }
 
 #footer-bottom {
