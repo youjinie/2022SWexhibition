@@ -11,11 +11,11 @@
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=usxa85bak8"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-
-    <link href="search.css" type="text/css" rel="stylesheet">
     <!--페이지 타이틀 아이콘 삽입-->
     <link rel="shortcut icon" type="image/x-icon" href="./img/logo.png">
-    <title>어의 | 선별진료소 검색</title>
+    <link href="search.css" type="text/css" rel="stylesheet">
+
+    <title>어의 | 약국 검색</title>
 </head>
 
 <body>
@@ -46,7 +46,8 @@
             <div class="ChoicebtnBlock">
                 <!--11-08 서영 : button id 변경-->
                 <button type="button" id="hospital" onclick="location.href='searchhospital'">병원</button>
-                <button type="button" id="pharmacy" onclick="location.href='searchpharmacy'">약국 / 편의점</button>
+                <button type="button" id="pharmacy" onclick="location.href='searchpharmacy'">약국 / 편의점
+                </button>
                 <button type="button" id="pcrCenter" onclick="location.href='searchpcrCenter'">선별진료소</button>
                 <button type="button" id="isolation" onclick="location.href='searchisolation'">격리시설</button>
             </div>
@@ -62,24 +63,108 @@
 
             <!--검색 바 위치 변경 : 지도 위 -> 지도 밑으로 -->
             <div class="searchBlock">
+                <!--submit , form 변경-->
                 <form action="" method="get">
                     <input id="searchVal" name="search" type="text" placeholder="이름을 입력해주세요 ">
 
                     <!--이미지 소스 삽입  + 앵커 삽입-->
-                    <a href="#map"><input id="btnSearch" name="btnSearch" type="image" src="./img/searchICON.png"
+                    <a href="#map"><input id="btnSearch" name="btnSearch" type="image" src="searchICON.png"
                             alt="검색"></a>
 
                 </form>
             </div>
 
+            <script>
+                function indexSubmit() {
+                    $.ajax({
+                        data: { sOrt: jsonn },
+                        async: false,
+                        sucess: function (data) {
+                            console.log("index submit success!!");
+                        },
+                        error: function (requrest, status, error) {
+                            console.log(error);
+                        }
+                    });
+                    location.href = 'searchpharmacy_distance';
 
+
+                }
+
+                function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
+                    function deg2rad(deg) {
+                        return deg * (Math.PI / 180)
+                    }
+
+                    var R = 6371; // Radius of the earth in km
+                    var dLat = deg2rad(lat2 - lat1);  // deg2rad below
+                    var dLon = deg2rad(lng2 - lng1);
+                    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                    var d = R * c; // Distance in km
+                    return d;
+                }
+
+
+                function sortWay() {
+                    var flag = true;
+                    sortIndex = [];
+                    jsonn = [];
+
+
+
+                    var sortSelect = document.getElementById("arrayhsp");
+                    var selectedWay = sortSelect.options[sortSelect.selectedIndex].value;
+
+                    if (selectedWay == "ganada") {
+                        location.href = "searchpharmacy";
+                    } else if (selectedWay == "distance") {
+                        var dist = [];
+
+                        <% for (var k = 0; k < model.length; k++) { %>
+                            var i = <%= k %>;
+                            var wid = <%= model[k].위도 %>;
+                            var gyd = <%= model[k].경도%>;
+
+                            //var Wdist = Math.abs(mePosW-wid);
+                            //var Gdist = Math.abs(mePosG-gyd);
+
+                            var ddist = getDistanceFromLatLonInKm(mePosW, mePosG, wid, gyd);
+
+                            console.log(mePosW, mePosG, wid, gyd);
+                            dist.push([ddist, <%= model[k].id %>]);
+                        <% } %>
+
+                            dist.sort();
+                        console.log(dist);
+
+                        for (var i = 0; i < dist.length; i++) {
+                            sortIndex[i] = dist[i][1];
+                        }
+                    }
+
+                    for (var i = 0; i < dist.length; i++) {
+                        jsonn.push({
+                            dist: dist[i][0],
+                            index: dist[i][1]
+                        });
+                    }
+
+                    indexSubmit();
+
+
+                }
+
+
+
+            </script>
             <div class="arrayBlcok">
-                <select name="arrayhsp" id="arrayhsp">
+                <select name="arrayhsp" id="arrayhsp" onchange="sortWay()">
                     <span>
-                        <option value="ganada">가나다순</option>
+                        <option value="ganada">가나다 순</option>
                     </span>
                     <span>
-                        <option value="distance">가까운순</option>
+                        <option value="distance">가까운 순</option>
                     </span>
                 </select>
                 <form>
@@ -95,16 +180,9 @@
                         wid = wido;
                         gyd = gyeongdo;
 
-                        var location = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
-                        var map = new naver.maps.Map('map', { // 지도 띄우기
-                            center: new naver.maps.LatLng(wid, gyd),
-                            zoom: 17,
-                            zoomControl: true, //줌 컨트롤의 표시 여부
-                            zoomControlOptions: { //줌 컨트롤의 옵션
-                                position: naver.maps.Position.TOP_RIGHT
-                            }
-                        });
-
+                        var loc = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
+                        map.setCenter(loc); // 얻은 좌표를 지도의 중심으로 설정합니다.
+                        map.setZoom(17);
                         var contentString = [
                             '<div class="iw_inner">',
                             '   <h3>' + hp + '</h3>',
@@ -138,14 +216,14 @@
                 <form>
                     <ul id="reslist">
                         <% for(var i=0; i<model.length; i++){ %>
-                            <li id=<%=model[i].id %> onclick='savewg("<%= model[i].선별진료소명%>",<%= model[i].위도 %>,<%=
+                            <li id=<%=model[i].id %> onclick='savewg("<%= model[i].업체명%>",<%= model[i].위도 %>,<%=
                                             model[i].경도 %>)'>
                                             <div>
-                                                <img id="img" name="사진" alt="사진" src="./img/isolation.jpg">
+                                                <img id="img" name="사진" alt="사진" src="./img/pharmacy.jpg">
                                             </div>
                                             <div class="inform">
                                                 <span id="name">
-                                                    <%= model[i].선별진료소명 %>
+                                                    <%= model[i].업체명 %>
                                                 </span>
                                                 <span id="tel"> |
                                                     <%= model[i].전화번호 %>
@@ -165,7 +243,70 @@
                                                 </span>
                                             </div>
 
+                                            <!--예약 버튼 클릭 시 예약 팝업창 뜨도록-->
+                                            <a href="#pop1" class="btn"><input type="button" id="btnReserve"
+                                                    value="배달 예약"></a>
 
+                                            <!--가려질 부분 / opacity : 0-->
+                                            <div class="popup" id="pop1">
+                                                <span>예약 정보를 입력해주세요✍🏻</span>
+                                                <div id="popupform">
+                                                    <form>
+                                                        <table id="reserveTable">
+                                                            <tr class="reserveMyData">
+                                                                <td class="popupTableKey">이름</td>
+                                                                <td class="popupTableValue"><input type="text"></td>
+                                                            </tr>
+                                                            <tr class="reserveMyData">
+                                                                <td class="popupTableKey">연락처</td>
+                                                                <td class="popupTableValue"><input type="tel"
+                                                                        placeholder="">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="reserveMyData">
+                                                                <td class="popupTableKey">주소</td>
+                                                                <td class="popupTableValue">
+                                                                    <input type="text" placeholder="">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="reserveHealth">
+                                                                <td class="popupTableKey">증상</td>
+                                                                <td><textarea class="popupTableValue" id="health"
+                                                                        rows="4" placeholder=""></textarea></td>
+                                                            </tr>
+                                                            <tr class="reserveDate">
+                                                                <!--날짜 입력 폼-->
+                                                                <td class="popupTableKey">희망 날짜</td
+                                                                    class="popupTableValue">
+                                                                <td><input type="date" class="popupTableValue"
+                                                                        id="reserveDate"></td>
+                                                                <script>
+                                                                    document.getElementById('reserveDate').value = new Date().toISOString().substring(0, 10);
+                                                                </script>
+                                                                <!--현재 날짜를 기본값으로-->
+                                                            </tr>
+                                                            <tr class="reserveDate">
+                                                                <!--진료 희망시간 선택 - 라디오버튼-->
+                                                                <td class="popupTableKey">희망 시간대</td>
+                                                                <td><input type="text" placeholder="30분 단위로 작성해주세요 :)">
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <a href="#a"><input id="btnClose" type="button" value="취소"></a>
+                                                        <input id="btnSub" type="submit" value="예약하기"
+                                                            onclick="btnSub_OnClick()" onClick="location.href='#a'"></a>
+                                                        <script>
+                                                            function btnSub_OnClick() {
+                                                                alert("예약이 접수되었습니다.");
+                                                                window.location.href = "#a";
+                                                            }
+                                                        </script>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="dim">
+                                            </div>
+                                            <!--여기까지-->
                             </li>
                             <% } %>
                                 <p style=clear:both;></p>
@@ -196,15 +337,15 @@
                 <div class="footer_title">Team </div>
                 <div>
                     <span><img src="./img/t_go.png"></span>
-                    <span>고은영 Back-end</span>
+                    <span>빅데이터 19 고은영</span>
                 </div>
                 <div>
                     <span><img src="./img/t_kim.png"></span>
-                    <span>김유진 Back-end</span>
+                    <span>빅데이터 19 김유진</span>
                 </div>
                 <div>
                     <span><img src="./img/t_nam.png"></span>
-                    <span>남서영 Front-end</span>
+                    <span>콘텐츠IT 19 남서영</span>
                 </div>
             </div>
         </div>
