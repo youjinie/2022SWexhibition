@@ -1,5 +1,4 @@
 /*검색 페이지 CSS*/
-
 body {
   font-size: 10px;
   width: 100%;
@@ -80,9 +79,6 @@ body {
   border-radius: 1.5rem;
   background: #ffffff;
   border: 0px;
-  /*border-style: solid;*/
-  /*color:white;*/
-  /*border-color: white;*/
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
 }
 .ChoicebtnBlock button:hover {
@@ -102,7 +98,6 @@ body {
 /*검색 바*/
 .searchBlock {
   margin: 2rem 0;
-  /*background-color: white;*/
   border: 2px solid;
   border-color: white;
   border-radius: 30px;
@@ -116,7 +111,6 @@ body {
 }
 .searchBlock:hover {
   scale: 102.5%;
-  /*background-color: rgba(0, 0, 0, 0.11);*/
   transition: all 0.4s; /*0.5초동안 애니메이션 효과*/
 }
 .searchBlock input {
@@ -178,7 +172,6 @@ body {
 /*해상도 1100px이상일 경우*/
 @media (min-width: 1100px) {
   #reslist {
-    /*background-color: rgb(212, 146, 146);*/
     margin: 4rem -5% 3rem 0;
     padding: 2rem 0;
   }
@@ -199,7 +192,6 @@ body {
 /*해상도 1100px이하일 경우*/
 @media all and (max-width: 1100px) and (min-width: 480px) {
   #reslist {
-    /*background-color: rgb(212, 146, 146);*/
     margin: 4rem 0 3rem 0;
     padding: 2rem 0;
   }
@@ -216,13 +208,10 @@ body {
     justify-content: center;
 
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.112);
-    /*display:table;
-      margin: 1rem auto;*/
   }
 }
 @media (max-width: 480px) {
   #reslist {
-    /*background-color: rgb(212, 146, 146);*/
     margin: 4rem 0 3rem 0;
     padding: 2rem 0;
   }
@@ -544,7 +533,6 @@ body {
   float: right;
   text-decoration: none;
 }
-/**=============================*/
 
 /*footer*/
 footer {
@@ -554,43 +542,6 @@ footer {
   margin-top: 10%;
   height: 18rem;
 }
-/*해상도 760px이상일 경우*/
-/*@media(min-width: 760px) {
-  footer {
-      margin-top: 0%;
-      height: 20rem;
-  }
-}
-/*해상도 760px이하일 경우*/
-/*@media (max-width: 760px) {
-  footer {
-      margin-top: 0;
-      height: 18rem;
-  }
-} */
-
-/*footer*/
-footer {
-  width: 80%;
-  padding: 1rem 10%;
-  background-color: rgba(0, 0, 0, 0.075);
-  margin-top: 10%;
-  height: 18rem;
-}
-/*해상도 760px이상일 경우*/
-/*@media(min-width: 760px) {
-  footer {
-      margin-top: 0%;
-      height: 20rem;
-  }
-}
-/*해상도 760px이하일 경우*/
-/*@media (max-width: 760px) {
-  footer {
-      margin-top: 0;
-      height: 18rem;
-  }
-} */
 
 /*footer 내용*/
 .footer_info div {
@@ -626,8 +577,24 @@ footer {
   height: 80%;
   float: right;
 }
+#footer-right div {
+  display: table;
+}
+#footer-right div span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 #footer-right div img {
-  height: 3.5rem;
+  width: 3.5rem;
+  height: auto;
+  margin-right: 1rem;
+}
+@media (max-width: 480px) {
+  #footer-right div img {
+    width: 2.5rem;
+    height: auto;
+  }
 }
 
 #footer-bottom {
