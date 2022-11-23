@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+    <!--페이지 타이틀 아이콘 삽입-->
+    <link rel="shortcut icon" type="image/x-icon" href="./img/logo.png">
+    <title>어의 | 마이페이지 MyPage</title>
+    <link href="mypage.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="title_main">
+            <!--<div id="title_bg">-->
+            <div class="title_bar">
+                <!--onClick 추가-->
+                <span><input id="logo" name="logo" type="button" value="HOME"
+                        onClick="location.href='mainPG.html'" /></span>
+                <!-- 수정 -->
+                <!--<span><input id="login" name="login" type="button" value="login"
+                        onClick="location.href='login'" /></span>-->
+                </form>
+                <br><br>
+            </div><br>
+            <div id="title_txt01">My Page</div>
+            <div id="title_txt02">로그인하고 더 많은 서비스를 이용해보세요</div>
+            <!--</div>-->
+        </div>
+    </header>
+    <!-- 중간부 : 마이 페이지 콘텐츠-->
+    <main>
+        <section>
+            <div class="myData">
+                <img id="photo" src="./img/t_so.png">
+                <span id="hi">
+                    <span style="color: black;">김한림</span>님 안녕하세요 :)
+                </span>
+            </div>
+            <div>
+                <span class="Data-title">개인정보</span>
+                <hr>
+                <span class="data">생년월일 | 22.11.24</span>
+                <span class="data">연락처 | 010-1234-5678</span>
+                <span class="data">이메일 | 20225100@hallym.ac.kr</span>
+            </div>
+            <div>
+                <span class="Data-title">나의 예약</span>
+                <hr>
+                <span id="reserve">현재 예약한 장소가 없어요 !</span>
+            </div>
+            <div>
+                <span class="Data-title">최근 이용한 장소</span>
+                <hr>
+                <span>
+                    <div class="place">
+                        <span>
+                            <img id="img-place" name="사진" alt="사진" src="./img/hospital.jpg">
+                        </span>
+                        <span class="inform">
+                            <span id="name">한림대학교 성심병원</span>
+                            <span id="tel"> | 033-123-4567</span>
+                            <span id="address"> 강원도 춘천시 한림대학길1</span>
+                            <span class="time">평일 08:30-18:00</span>
+                            <span class="time">토요일 08:30-13:00</span>
+                            <span class="time">일요일 08:30-13:00</span>
+                        </span>
+                    </div>
+                </span>
+            </div>
+            <div>
+                <span class="Data-title">즐겨찾기한 장소</span>
+                <hr>
+                <span>
+                    <div class="place">
+                        <span>
+                            <img id="img-place" name="사진" alt="사진" src="./img/hospital.jpg">
+                        </span>
+                        <span class="inform">
+                            <span id="name">한림대학교 성심병원</span>
+                            <span id="tel"> | 033-123-4567</span>
+                            <span id="address"> 강원도 춘천시 한림대학길1</span>
+                            <span class="time">평일 08:30-18:00</span>
+                            <span class="time">토요일 08:30-13:00</span>
+                            <span class="time">일요일 08:30-13:00</span>
+                        </span>
+                    </div>
+                </span>
+            </div>
+            <p style=clear:both;></p>
+        </section>
+    </main>
+
+    <footer>
+        <!--사이트 정보-->
+        <div class="footer_info">
+            <div id="footer-left">
+                <div class="footer_title">Project</div>
+                <div><img id="logomean" src="./img/logo+mean.png"></div>
+                <div>2022-2 Capstone Design</div>
+                <div>Project EOUI</div>
+            </div>
+            <div id="footer-center">
+                <div class="footer_title">Program</div>
+                <div>Tool | Visual Studio Code</div>
+                <div>Front-end | HTML, CSS, JavaScript</div>
+                <div>Back-end | Nodejs, SQLite3, jQuery, Express</div>
+                <div>UI,UX | Photoshop, Illustrator, Figma</div>
+                <div>API | Naver Map</div>
+            </div>
+            <div id="footer-right">
+                <div class="footer_title">Team </div>
+                <div>
+                    <span><img src="./img/t_go.png"></span>
+                    <span>빅데이터 19 고은영</span>
+                </div>
+                <div>
+                    <span><img src="./img/t_kim.png"></span>
+                    <span>빅데이터 19 김유진</span>
+                </div>
+                <div>
+                    <span><img src="./img/t_nam.png"></span>
+                    <span>콘텐츠IT 19 남서영</span>
+                </div>
+            </div>
+        </div>
+        <div id="footer-bottom">
+            @2022-2 Capstone Design Made by Team Homehealer
+        </div>
+    </footer>
+
+</body>
+
+</html>
