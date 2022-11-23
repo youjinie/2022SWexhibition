@@ -30,6 +30,9 @@ app.get("/", function (요청, 응답) {
 app.get("/Login", function (요청, 응답) {
   응답.sendFile(__dirname + "/login.html");
 });
+app.get("/mypage", function (요청, 응답) {
+  응답.sendFile(__dirname + "/mypage.html");
+});
 
 app.get("/searchhospital", function (요청, 응답) {
   //응답.sendFile(__dirname + '/search.html');
