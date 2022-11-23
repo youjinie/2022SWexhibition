@@ -26,7 +26,7 @@ app.post("/change");
 app.get("/", function (요청, 응답) {
   응답.sendFile(__dirname + "/mainPG.html");
 });
-app.get("/ogin", function (요청, 응답) {
+app.get("/login", function (요청, 응답) {
   응답.sendFile(__dirname + "/login.html");
 });
 app.get("/mypage", function (요청, 응답) {
