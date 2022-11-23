@@ -13,8 +13,9 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
     <link href="search.css" type="text/css" rel="stylesheet">
-
-    <title> 방구석 힐러 - 검색</title>
+    <!--페이지 타이틀 아이콘 삽입-->
+    <link rel="shortcut icon" type="image/x-icon" href="./img/logo.png">
+    <title>어의 | 격리시설 검색</title>
 </head>
 
 <body>
@@ -25,9 +26,10 @@
                 <div class="title_bar">
                     <form>
                         <!--onClick 추가-->
-                        <span><input id="logo" name="logo" type="button" value="사이트 로고"
-                                onClick="location.href='mainPG.html'" /></span>
-                        <span><input id="login" name="login" type="button" value="login" /></span>
+                        <span><input id="logo" name="logo" type="button" value="HOME"
+                                onClick="location.href='/'" /></span>
+                        <span><input id="login" name="login" type="button" value="My Page"
+                                onClick="location.href='login'" /></span>
                     </form>
                     <br><br>
                 </div>
@@ -44,7 +46,7 @@
             <div class="ChoicebtnBlock">
                 <!--11-08 서영 : button id 변경-->
                 <button type="button" id="hospital" onclick="location.href='searchhospital'">병원</button>
-                <button type="button" id="pharmacy" onclick="location.href='searchpharmacy'">약국</button>
+                <button type="button" id="pharmacy" onclick="location.href='searchpharmacy'">약국 / 편의점</button>
                 <button type="button" id="pcrCenter" onclick="location.href='searchpcrCenter'">선별진료소</button>
                 <button type="button" id="isolation" onclick="location.href='searchisolation'">격리시설</button>
             </div>
@@ -60,11 +62,13 @@
 
             <!--검색 바 위치 변경 : 지도 위 -> 지도 밑으로 -->
             <div class="searchBlock">
-                <form>
+
+                <!--submit , form 변경-->
+                <form action="" method="get">
                     <input id="searchVal" name="search" type="text" placeholder="이름을 입력해주세요 ">
 
                     <!--이미지 소스 삽입  + 앵커 삽입-->
-                    <a href="#map"><input id="btnSearch" name="btnSearch" type="submit" src="searchICON.png"
+                    <a href="#map"><input id="btnSearch" name="btnSearch" type="image" src="./img/searchICON.png"
                             alt="검색"></a>
 
                 </form>
@@ -74,10 +78,10 @@
             <div class="arrayBlcok">
                 <select name="arrayhsp" id="arrayhsp">
                     <span>
-                        <option value="distance">가까운 순</option>
+                        <option value="ganada">가나다순</option>
                     </span>
                     <span>
-                        <option value="related">관련도 순</option>
+                        <option value="distance">가까운순</option>
                     </span>
                 </select>
                 <form>
@@ -93,15 +97,9 @@
                         wid = wido;
                         gyd = gyeongdo;
 
-                        var location = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
-                        var map = new naver.maps.Map('map', { // 지도 띄우기
-                            center: new naver.maps.LatLng(wid, gyd),
-                            zoom: 17,
-                            zoomControl: true, //줌 컨트롤의 표시 여부
-                            zoomControlOptions: { //줌 컨트롤의 옵션
-                                position: naver.maps.Position.TOP_RIGHT
-                            }
-                        });
+                        var loc = new naver.maps.LatLng(wid, gyd); // 누른버튼의 위도 경도
+                        map.setCenter(loc); // 얻은 좌표를 지도의 중심으로 설정합니다.
+                        map.setZoom(17);
 
                         var contentString = [
                             '<div class="iw_inner">',
@@ -133,12 +131,12 @@
 
 
                 </script>
-<form>
+                <form>
                     <ul id="reslist">
 
                         <li onclick='savewg("코로나 생활치료센터",37.8873,127.7414)'>
                             <div>
-                                <img id="img" name="사진" alt="사진" src="">
+                                <img id="img" name="사진" alt="사진" src="./img/isolation.jpg">
                             </div>
                             <div class="inform">
                                 <span id="name">코로나 생활치료센터
@@ -146,44 +144,64 @@
                                 </span>
                                 <span id="tel"> | 033-000-0000
 
-                                </span><br>
+                                </span>
                                 <span id="address"> OO도 OO시 OOO로 OOO번지 OO-O
 
-                                </span><br>
-                                <br>
+                                </span>
+
                                 <span>
                                     "자세한 내용은 위의 연락처로 문의
-                                    <br>혹는 해당 사이트로 접속해 주시길 바랍니다."
+                                    혹는 해당 사이트로 접속해 주시길 바랍니다."
                                 </span>
                             </div>
 
-                            <!--예약 버튼 클릭 시 예약 팝업창 뜨도록-->
-                            <a href="#pop1" class="btn"><input type="button" id="btnReserve" value="예약 하기"></a>
 
-                            <!--가려질 부분 / opacity : 0-->
-                            <div class="popup" id="pop1">
-                                <a href="#a">닫기</a>
-                            </div>
                             <div class="dim">
 
                             </div>
                             <!--여기까지-->
                         </li>
-                    <!--<span><input name="add" type="button" value="더보기"></span>-->
+                        <!--<span><input name="add" type="button" value="더보기"></span>-->
                 </form>
             </div>
         </section>
     </main>
-
     <footer>
         <!--사이트 정보-->
-        <div id="bottomContents">
-            <span>이미지1</span>
-            <span>이미지2</span>
-            <span>이미지3</span>
-            사이트 정보 입력 예정
+        <div class="footer_info">
+            <div id="footer-left">
+                <div class="footer_title">Project</div>
+                <div><img id="logomean" src="./img/logo+mean.png"></div>
+                <div>2022-2 Capstone Design</div>
+                <div>Project EOUI</div>
+            </div>
+            <div id="footer-center">
+                <div class="footer_title">Program</div>
+                <div>Tool | Visual Studio Code</div>
+                <div>Front-end | HTML, CSS, JavaScript</div>
+                <div>Back-end | Nodejs, SQLite3, jQuery, Express</div>
+                <div>UI,UX | Photoshop, Illustrator, Figma</div>
+                <div>API | Naver Map</div>
+            </div>
+            <div id="footer-right">
+                <div class="footer_title">Team </div>
+                <div>
+                    <span><img src="./img/t_go.png"></span>
+                    <span>빅데이터 19 고은영</span>
+                </div>
+                <div>
+                    <span><img src="./img/t_kim.png"></span>
+                    <span>빅데이터 19 김유진</span>
+                </div>
+                <div>
+                    <span><img src="./img/t_nam.png"></span>
+                    <span>콘텐츠IT 19 남서영</span>
+                </div>
+            </div>
         </div>
-    </footer>
+        <div id="footer-bottom">
+            @2022-2 Capstone Design Made by Team Homehealer
+        </div>
     </footer>
 </body>
 
