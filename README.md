@@ -23,6 +23,7 @@
 
 ### 프로젝트 시나리오
 ![어의_웹사이트 구조도](https://user-images.githubusercontent.com/52689956/203647304-6a9d27be-4eac-4062-9350-25db7f94bf50.jpg)
+![시나리오 최종](https://user-images.githubusercontent.com/52689951/203710670-6d7f3cdc-0391-4c4a-b4a9-2a99b73efd5b.png)
 
 
 ###  개발 환경
@@ -43,6 +44,10 @@
 
 ### 로그인 화면 
 ![로그인정보](https://user-images.githubusercontent.com/52689951/203469825-e863aa13-21a1-4b11-afc2-016076e770fa.png)
+
+### 마이페이지 
+![마이페이지](https://user-images.githubusercontent.com/52689951/203710640-ea7d079e-d467-4216-bbca-b369bca95818.png)
+
 
 ### 예약폼
 ![예약하기](https://user-images.githubusercontent.com/52689951/203470031-9c5b1064-d6af-4ecf-9a09-ec3a53363e7e.png)
