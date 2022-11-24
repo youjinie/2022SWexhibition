@@ -22,7 +22,6 @@
 
 
 ### 프로젝트 시나리오
-![어의_웹사이트 구조도](https://user-images.githubusercontent.com/52689956/203647304-6a9d27be-4eac-4062-9350-25db7f94bf50.jpg)
 ![시나리오 최종](https://user-images.githubusercontent.com/52689951/203710670-6d7f3cdc-0391-4c4a-b4a9-2a99b73efd5b.png)
 
 
