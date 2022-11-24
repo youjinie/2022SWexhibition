@@ -36,15 +36,13 @@
         <section class="login-Section">
             <div class="login-form">
 
-                <form name="login-bar" onsubmit="return loginFormCheck()">
+                <form name="login-bar">
                     <div class=log>
-                        <input class="Login" id="ID" type="text" placeholder="   아이디" autocomplete="off" />
+                        <input class="Login" id="ID" type="text" required="required" placeholder="   아이디"
+                            autocomplete="off" />
                         <br /><br />
-                        <input class="Login" id="PASSWORD" type="password" placeholder="   비밀번호" autocomplete="off" />
-                        <a colspan="2" id="checkMsg"></a>
-
-
-
+                        <input class="Login" id="PASSWORD" type="password" required="required" placeholder="   비밀번호"
+                            autocomplete="off" />
                     </div>
                     <br />
                     <div class="auto">
@@ -53,11 +51,12 @@
                     </div>
 
                     <div>
-                        <input type="submit" id="login-button" class="login-finish" value=" 로그인 하기">
+                        <input type="submit" id="login-button" class="login-finish" value=" 로그인 하기"
+                            onClick="location.href='mypage'">
                     </div>
 
 
-                    <div class=" login-find">
+                    <div class="login-find">
                         <a href id="f-id">아이디 찾기</a>
                         <a href id="f-pw">비밀번호 찾기</a>
                     </div>
@@ -68,31 +67,6 @@
                         <a href id="sign">회원가입하기</a>
                     </div>
                 </form>
-                <script>
-                    check = false;
-                    function loginFormCheck() {
-                        var msgObj = document.getElementById('checkMsg')
-                        var i = document.getElementById('ID');
-                        var p = document.getElementById('PASSWORD');
-                        isize = i.value.length;
-                        psize = p.value.length;
-                        if (isize == 0) {
-                            msgObj.innerText = '아이디를 입력 해주세요';
-                            msgObj.style.color = 'red';
-                            i.focus();
-                            return false;
-                        }
-                        else if (psize == 0) {
-                            msgObj.innerText = '비밀번호를 입력 해주세요';
-                            msgObj.style.color = 'red';
-                            p.focus();
-                            return false;
-                        }
-                        else {
-                            return true;
-                        }
-                    }
-                </script>
             </div>
         </section>
     </main>
