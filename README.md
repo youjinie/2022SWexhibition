@@ -59,4 +59,4 @@
 https://www.figma.com/file/GkJlLj4QwXuzxYA5DVpHk0/%EC%BA%A1%EC%8A%A4%ED%86%A4-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%9B%B9-%ED%8E%98%EC%9D%B4%EC%A7%80?node-id=0%3A1
 
 홈페이지 링크
-https://homecarehealer.herokuapp.com/   (22.11.28 이후 헤로쿠 유료화에 따라 DB 삭제될 예정 - 시기 )
+https://homecarehealer.herokuapp.com/   (22.11.28 이후 헤로쿠 유료화에 따라 DB 삭제될 예정 - 시기 미정 )
